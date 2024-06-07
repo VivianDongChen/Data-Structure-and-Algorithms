@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class E03BinarySearchTest {
+public class RecursionBinarySearchTest {
 
     @Test
     @DisplayName("测试 RecursionBinarySearch")
