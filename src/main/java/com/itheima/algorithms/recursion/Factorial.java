@@ -1,5 +1,6 @@
 package com.itheima.algorithms.recursion;
 
+//递归阶乘
 public class Factorial {
 
     public static int f (int n){

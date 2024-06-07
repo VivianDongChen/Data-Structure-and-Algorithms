@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
+//手动实现一个动态数组
 public class DynamicArray implements Iterable<Integer>{
 
     private int size = 0; //逻辑大小，控制数组内有效元素的个数
