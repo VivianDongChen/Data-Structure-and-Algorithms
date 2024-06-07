@@ -72,4 +72,80 @@ public class CircularDoublyLinkedListSentinel implements Iterable<Integer>{
         a.next = added;
         b.prev = added;
     }
+
+    /**
+     * 删除第一个
+     */
+    public void removeFirst(){
+        Node removed = sentinel.next;
+        if(removed == sentinel){
+            throw illegalIndex(0);
+        }
+        Node a = sentinel;
+        Node b = removed.next;
+
+        a.next = b;
+        b.prev = a;
+
+    }
+
+    /**
+     * helper方法 - 生成异常
+     * @param index
+     * @return
+     */
+    private IllegalArgumentException illegalIndex(int index) {
+        return new IllegalArgumentException(String.format("index [%d] 不合法%n", index));
+    }
+
+    /**
+     * 删除最后一个
+     */
+    public void removeLast(){
+        Node removed = sentinel.prev;
+
+        if(removed == sentinel){
+            throw illegalIndex(0);
+        }
+
+        Node a = removed.prev;
+        Node b = sentinel;
+
+        b.prev = a;
+        a.next = b;
+
+    }
+
+    /**
+     * 根据值删除
+     * @param value 目标值
+     */
+    public void removeByValue(int value){
+        Node removed = findByValue(value);
+        if(removed == null){
+            return;  //不用删
+        }
+        Node a = removed.prev;
+        Node b = removed.next;
+        a.next = b;
+        b.prev = a;
+
+    }
+
+
+    /**
+     * helper方法：根据值找到节点
+     * @param value 目标值
+     * @return
+     */
+    private Node findByValue(int value){
+        Node p = sentinel.next;
+        while(p != sentinel){
+            if(p.value == value){
+                return p;
+            }
+            p = p.next;
+        }
+        return null;
+    }
 }

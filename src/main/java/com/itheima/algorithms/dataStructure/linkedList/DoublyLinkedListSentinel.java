@@ -23,6 +23,7 @@ public class DoublyLinkedListSentinel implements Iterable<Integer>{
         };
     }
 
+
     static class Node {
         Node prev;   //上一个节点
         int value;   //值
