@@ -11,6 +11,7 @@ import java.util.Arrays;
  */
 public class RecursionBubbleSort {
 
+    //递归冒泡排序基础版
     public static void sort(int[] a){
         bubble(a,a.length-1);
     }
@@ -40,4 +41,34 @@ public class RecursionBubbleSort {
         System.out.println(Arrays.toString(a));
 
     }
+
+
+
+    //递归冒泡排序改进版
+    public static void sort1(int[] a){
+        bubble1(a,a.length-1);
+    }
+
+    //改进版：对未排序区域的边界设置一个变量x,这样就不用对已经排好序的再进行比较了,减少不必要的递归
+    private static void bubble1(int[] a, int j){
+
+        int x = 0;
+
+        if(j == 0){
+            return;
+        }
+        for (int i = 0; i < j; i++) {
+            if(a[i] > a[i+1]){
+                int t = a[i];
+                a[i] = a[i+1];
+                a[i+1] = t;
+                x = i; //最后一次交换的i就是未排序区域的边界
+            }
+
+        }
+        bubble(a,x);
+
+    }
+
+
 }
