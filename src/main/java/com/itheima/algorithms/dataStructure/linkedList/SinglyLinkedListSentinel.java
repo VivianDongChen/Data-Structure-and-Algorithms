@@ -4,7 +4,7 @@ package com.itheima.algorithms.dataStructure.linkedList;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-//单向链表(带哨兵)
+//单向链表带哨兵
 public class SinglyLinkedListSentinel implements Iterable<Integer> {    //整体
     private Node head = new Node(666, null); //头指针
 
