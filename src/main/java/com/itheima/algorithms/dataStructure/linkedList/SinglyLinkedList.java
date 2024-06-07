@@ -52,7 +52,32 @@ public class SinglyLinkedList implements Iterable<Integer>{    //整体
     }
 
     /**
-     * 遍历方式3 - 迭代器循环
+     * 遍历方式3 - 递归遍历
+     */
+    public void loop3(Consumer<Integer> before,Consumer<Integer> after){
+
+        recursion(head,before,after);
+
+    }
+
+    private void recursion(Node curr,
+                           Consumer<Integer> before,
+                           Consumer<Integer> after){   //针对某个节点要进行的操作
+
+        if(curr == null){
+            return;
+        }
+
+        before.accept(curr.value);
+
+        recursion(curr.next, before, after);
+
+        after.accept(curr.value);
+
+    }
+
+    /**
+     * 遍历方式4 - 迭代器循环
      * @return - 迭代器
      */
     @Override

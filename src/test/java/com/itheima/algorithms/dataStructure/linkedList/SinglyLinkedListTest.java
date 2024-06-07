@@ -158,4 +158,21 @@ class SinglyLinkedListTest {
 
     }
 
+
+    @Test
+    @DisplayName("测试loop3")
+    public void test9(){
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+
+        list.loop3(value ->{
+            System.out.println("before:"+value);
+        },value ->{
+            System.out.println("after:"+value);
+        });
+    }
+
 }
