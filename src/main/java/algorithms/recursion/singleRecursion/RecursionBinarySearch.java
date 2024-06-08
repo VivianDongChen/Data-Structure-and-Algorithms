@@ -1,4 +1,4 @@
-package algorithms.recursion;
+package algorithms.recursion.singleRecursion;
 
 //递归二分查找
 public class RecursionBinarySearch {

@@ -1,6 +1,6 @@
-package algorithms.recursion;
+package algorithms.recursion.singleRecursion;
 
-import algorithms.recursion.RecursionBinarySearch;
+import algorithms.recursion.singleRecursion.RecursionBinarySearch;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

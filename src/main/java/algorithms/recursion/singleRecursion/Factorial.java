@@ -1,4 +1,4 @@
-package algorithms.recursion;
+package algorithms.recursion.singleRecursion;
 
 //递归阶乘
 public class Factorial {

@@ -1,5 +1,6 @@
-package algorithms.recursion;
+package algorithms.recursion.singleRecursion;
 
+import algorithms.recursion.singleRecursion.RecursionInsertSort;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package algorithms.recursion;
+package algorithms.recursion.singleRecursion;
 
 //递归反向打印字符串
 public class ReversePrintString {
