@@ -1,7 +1,7 @@
 package dataStructure.linkedList;
 
 //反转链表
-public class LeetCode206ReverseLinkedList {
+public class LeetCode0206ReverseLinkedList {
 
 
     /**
@@ -148,7 +148,7 @@ public class LeetCode206ReverseLinkedList {
         ListNode o2 = new ListNode(2,o3);
         ListNode o1 = new ListNode(1,o2);
         System.out.println(o1);
-        ListNode n1 = LeetCode206ReverseLinkedList.reverseList5(o1);
+        ListNode n1 = LeetCode0206ReverseLinkedList.reverseList5(o1);
         System.out.println(n1);
 
 

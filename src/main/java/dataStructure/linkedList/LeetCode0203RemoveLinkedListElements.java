@@ -1,7 +1,7 @@
 package dataStructure.linkedList;
 
 //根据值删除节点
-public class LeetCode203RemoveLinkedListElements {
+public class LeetCode0203RemoveLinkedListElements {
 
     /**
      * 方法1 - 使用哨兵节点和两个指针（如果不加哨兵，则删除第一个节点要特殊处理）
@@ -75,7 +75,7 @@ public class LeetCode203RemoveLinkedListElements {
     public static void main(String[] args) {
         ListNode head = ListNode.of(1,2,6,3,6);
         System.out.println(head);
-        System.out.println(new LeetCode203RemoveLinkedListElements().removeElements2(head,6));
+        System.out.println(new LeetCode0203RemoveLinkedListElements().removeElements2(head,6));
 
     }
 
