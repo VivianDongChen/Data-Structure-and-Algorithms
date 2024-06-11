@@ -11,6 +11,18 @@ public class ListNode {
         this.next = next;
     }
 
+    // Utility method to create a linked list from an array of values
+    static ListNode of(int... values) {
+        if (values.length == 0) return null;
+        ListNode head = new ListNode(values[0], null);
+        ListNode current = head;
+        for (int i = 1; i < values.length; i++) {
+            current.next = new ListNode(values[i], null);   //尾部插入
+            current = current.next;
+        }
+        return head;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(64);
@@ -26,4 +38,5 @@ public class ListNode {
         sb.append("]");
         return sb.toString();
     }
+
 }
