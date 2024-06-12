@@ -1,6 +1,6 @@
 package dataStructure.linkedList;
 
-public class LeetCode0141LinkedListCycle {
+public class LeetCode0142LinkedListCycleII {
 
     /**
      * 佛洛依德龟兔赛跑算法（环判算法）
@@ -13,18 +13,26 @@ public class LeetCode0141LinkedListCycle {
      *  - 龟和兔子一次都走一步
      *  - 当再次相遇时，地点就是环的入口
      */
-    public boolean hasCycle(ListNode head){
+    public ListNode detectCycle(ListNode head){
         ListNode h = head;
         ListNode t = head;
 
         while(h != null && h.next!= null){
             t = t.next;
             h = h.next.next;
-            if( t == h){
-                return true;
+            if( t == h){   //第一次相遇
+                //进入第二阶段
+                t = head;   //龟回到起点
+                while(true){
+                    if(t == h){     //第二次相遇
+                        return t;
+                    }
+                    t = t.next;
+                    h = h.next;
+                }
             }
         }
-        return false;
+        return null;
     }
 
     public static void main(String[] args) {
@@ -41,9 +49,9 @@ public class LeetCode0141LinkedListCycle {
         ListNode n2 = new ListNode(2, n3);
         ListNode n1 = new ListNode(1, n2);
 
-//        n12.next = n8;
+        n12.next = n1;
 
-        System.out.println(new LeetCode0141LinkedListCycle().hasCycle(n1));
+        System.out.println(new LeetCode0142LinkedListCycleII().detectCycle(n1).val);
 
 
 
