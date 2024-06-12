@@ -86,10 +86,9 @@ public class LeetCode0234PalindromeLinkedList {
             p2 = p2.next.next;
 
             //反转前半链表
-            ListNode o2 = o1.next;
             o1.next = n1;
             n1 = o1;
-            o1 = o2;
+            o1 = p1;
         }
         System.out.println(n1);
         System.out.println(p1);
