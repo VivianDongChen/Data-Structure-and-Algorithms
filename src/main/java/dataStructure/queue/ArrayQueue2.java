@@ -3,28 +3,22 @@ package dataStructure.queue;
 import java.util.Iterator;
 
 /**
- * 使用环形数组来实现队列 - 方法1
- *
- * 环形数组的优点
- * - 对比普通数组，起点和终点更为自由，不用考虑数据移动
- * - “环”意味着不会存在“越界”问题
- * - 数组性能更加
- * - 环形数组比较适合实现有界队列，RingBuffer等
- *
- * 方法1: 用head和tail的位置来判断队列是空还是满，为了区分两种状态，tail不能存储数据
- *
- * @param <E>
+ * 使用环形数组来实现队列 - 方法2
+ * 方法2: 用size和capacity来判断队列是空还是满， 空或者满，tail和head都会重合
  */
-public class ArrayQueue1<E> implements Queue<E>, Iterable<E> {
+public class ArrayQueue2<E> implements Queue<E>, Iterable<E>{
 
     private E[] array;
     private int head = 0;
     private int tail = 0;
 
-    @SuppressWarnings("all")      //抑制所有编译器警告
-    public ArrayQueue1(int capacity) {
-        array = (E[]) new Object[capacity + 1];  //初始化泛型数组 array，数组长度为 capacity + 1(有一个不能存数据，用来存尾指针）
-        //由于Java中不允许直接创建泛型数组，所以这里通过创建一个 Object 数组并进行类型转换来实现。
+    private int size = 0;
+
+
+    @SuppressWarnings("all")
+    public ArrayQueue2(int capacity) {
+        array = (E[]) new Object[capacity];
+
     }
 
     @Override
@@ -34,6 +28,7 @@ public class ArrayQueue1<E> implements Queue<E>, Iterable<E> {
         }
         array[tail] = value;
         tail = (tail + 1) % array.length;  //计算环形数组索引
+        size ++;
         return true;
     }
 
@@ -44,6 +39,7 @@ public class ArrayQueue1<E> implements Queue<E>, Iterable<E> {
         }
         E value = array[head];
         head = (head + 1) % array.length;
+        size --;
         return value;
     }
 
@@ -57,28 +53,30 @@ public class ArrayQueue1<E> implements Queue<E>, Iterable<E> {
 
     @Override
     public boolean isEmpty() {
-        return head == tail;
+        return size == 0;
     }
 
     @Override
     public boolean isFull() {
-        return (tail + 1) % array.length == head;
+        return size == array.length;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             int p = head;
+            int count = 0;
 
             @Override
             public boolean hasNext() {
-                return p != tail;
+                return count < size;
             }
 
             @Override
             public E next() {
                 E value = array[p];
                 p = (p + 1) % array.length;
+                count ++;
                 return value;
             }
         };
