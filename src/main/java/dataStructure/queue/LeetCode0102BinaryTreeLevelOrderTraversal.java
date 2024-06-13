@@ -4,40 +4,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 //二叉树层序遍历 - 利用queue的头出尾进来遍历
-
-/**
- * /*
- *                 1
- *                / \
- *               2   3
- *              / \ / \
- *             4  5 6  7
- *
- *            1 2 3 4 5 6 7
- *
- *            尾部加入1                 头[1]尾
- *
- *            弹出1                    头[]尾
- *            尾部加入其子：2，3         头[2,3]尾
- *
- *            弹出2                    头[3]尾
- *            尾部加入其子：4，5         头[3,4,5]尾
- *
- *            弹出3                    头[4,5]尾
- *            尾部加入其子：6，7         头[4,5,6,7]尾
- *
- *            弹出4                    头[5,6,7]尾
- *
- *            弹出5                    头[6,7]尾
- *
- *            弹出6                    头[7]尾
- *
- *            弹出7                    头[]尾
- *
- *      */
- */
 public class LeetCode0102BinaryTreeLevelOrderTraversal {
 
+    private static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
+
+        public TreeNode(TreeNode left, int val, TreeNode right) {
+            this.left = left;
+            this.val = val;
+            this.right = right;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(this.val);
+        }
+    }
+
+    /**
+     * /*
+     *                 1
+     *                / \
+     *               2   3
+     *              / \ / \
+     *             4  5 6  7
+     *
+     *            1 2 3 4 5 6 7
+     *
+     *            尾部加入1                 头[1]尾
+     *
+     *            弹出1                    头[]尾
+     *            尾部加入其子：2，3         头[2,3]尾
+     *
+     *            弹出2                    头[3]尾
+     *            尾部加入其子：4，5         头[3,4,5]尾
+     *
+     *            弹出3                    头[4,5]尾
+     *            尾部加入其子：6，7         头[4,5,6,7]尾
+     *
+     *            弹出4                    头[5,6,7]尾
+     *
+     *            弹出5                    头[6,7]尾
+     *
+     *            弹出6                    头[7]尾
+     *
+     *            弹出7                    头[]尾
+     *
+    */
     public List<List<Integer>>levelOrder(TreeNode root){
         List<List<Integer>> result = new ArrayList<>();
         if(root == null){
