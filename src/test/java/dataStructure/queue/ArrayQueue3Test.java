@@ -55,10 +55,26 @@ class ArrayQueue3Test {
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
-        assertFalse(queue.offer(4));
+        queue.offer(4);
         assertFalse(queue.offer(5));
 
-        assertIterableEquals(List.of(1,2,3),queue);
+        assertIterableEquals(List.of(1,2,3,4),queue);
+    }
+
+    @Test
+    public void boundary(){
+        ArrayQueue3 queue = new ArrayQueue3<>(10);
+        // 2147483647 int正整数最大值
+        queue.head = 2147483640;
+        queue.tail = queue.head;
+
+        for (int i = 0; i < 10; i++) {
+            queue.offer(i);
+        }
+        for(Object value: queue){
+            System.out.println(value);
+        }
+
     }
 
 }
