@@ -3,7 +3,7 @@ package dataStructure.stack;
 import java.util.LinkedList;
 
 // 中缀表达式转后缀表达式
-public class InfixtoSuffix {
+public class InfixToSuffix {
     /**
      *
      * 思路
@@ -90,7 +90,5 @@ public class InfixtoSuffix {
         System.out.println(infixToSuffix("(a+b)*c"));
         System.out.println(infixToSuffix("(a+b*c-d)*e"));
         System.out.println(infixToSuffix("a*(b+c)"));
-
-
     }
 }
