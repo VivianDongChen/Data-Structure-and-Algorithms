@@ -3,7 +3,11 @@ package DataStructure.PriorityQueue;
 import DataStructure.Queue.Queue;
 
 /**
- * 基于无序数组实现
+ * 基于无序数组实现（入队简单，出队复杂）
+ *
+ *      index         0   1   2   3   4   5   6
+ *      E(priority)   4   2   1   5   10  7   3
+ *
  * @param <E> 队列中元素类型，必须实现Priority接口
  */
 public class PriorityQueue1<E extends Priority> implements Queue<E> {
@@ -74,7 +78,9 @@ public class PriorityQueue1<E extends Priority> implements Queue<E> {
             //移动
             System.arraycopy(array,index+1,array,index,size-1-index);
         }
-        size--;    //如果删除的是最后一位，直接size-1即可
+//        size--;    //如果删除的是最后一位，直接size-1即可
+        array[--size] = null; //help GC
+
     }
 
     @Override
