@@ -1,11 +1,30 @@
-package DataStructure.Queue;
+package DataStructure.Deque;
+
+import DataStructure.Queue.LeetCode0102BinaryTreeLevelOrderTraversal;
+import DataStructure.Queue.LinkedListQueue;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-//二叉树层序遍历 - 利用queue的头出尾进来遍历
-public class LeetCode0102BinaryTreeLevelOrderTraversal {
+// 二叉树Z字层序遍历
+public class LeetCode0103BinaryTreeZigzagLevelOrderTraversal {
 
+    /*
+             1
+            / \
+           2   3
+          /\   /\
+         4  5 6  7
+        /\
+       8  9
+
+       1
+       3 2
+       4 5 6 7
+       9 8
+
+     */
     private static class TreeNode {
         public int val;
         public TreeNode left;
@@ -27,50 +46,28 @@ public class LeetCode0102BinaryTreeLevelOrderTraversal {
         }
     }
 
-    /**
-     * /*
-     *                 1
-     *                / \
-     *               2   3
-     *              / \ / \
-     *             4  5 6  7
-     *
-     *            1 2 3 4 5 6 7
-     *
-     *            尾部加入1                 头[1]尾
-     *
-     *            头部弹出1                 头[]尾
-     *            尾部加入其子：2，3         头[2,3]尾
-     *
-     *            头部弹出2                 头[3]尾
-     *            尾部加入其子：4，5         头[3,4,5]尾
-     *
-     *            头部弹出3                 头[4,5]尾
-     *            尾部加入其子：6，7         头[4,5,6,7]尾
-     *
-     *            头部弹出4                 头[5,6,7]尾
-     *
-     *            头部弹出5                 头[6,7]尾
-     *
-     *            头部弹出6                 头[7]尾
-     *
-     *            头部弹出7                 头[]尾
-     *
-    */
-    public List<List<Integer>>levelOrder(TreeNode root){
+    public static List<List<Integer>> zigzagLevelOrder(TreeNode root){
         List<List<Integer>> result = new ArrayList<>();
         if(root == null){
             return result;
         }
         LinkedListQueue<TreeNode> queue = new LinkedListQueue<>();
         queue.offer(root);
-        int c1 = 1; //当前层的节点数
+        int c1 = 1;  //当前层的节点数
+        boolean odd = true; //奇数层
         while(!queue.isEmpty()){
             int c2 = 0; //下一层的节点数
-            List<Integer> level = new ArrayList<>();   //保存每一层结果
+            LinkedList<Integer> level = new LinkedList<>();  //保存每一层结果
             for (int i = 0; i < c1; i++) {
                 TreeNode n = queue.poll();
-                level.add(n.val);
+
+                //如果是奇数层，往尾部添加； 如果是偶数层，往头部添加
+                if(odd){
+                    level.offerLast(n.val);
+                }else{
+                    level.offerFirst(n.val);
+                }
+
                 if(n.left != null){
                     queue.offer(n.left);
                     c2++;
@@ -82,6 +79,7 @@ public class LeetCode0102BinaryTreeLevelOrderTraversal {
             }
             result.add(level);
             c1 = c2;
+            odd = !odd;
             System.out.println();
         }
         return result;
@@ -105,9 +103,10 @@ public class LeetCode0102BinaryTreeLevelOrderTraversal {
 
         );
 
-        System.out.println(new LeetCode0102BinaryTreeLevelOrderTraversal().levelOrder(root));
+        System.out.println(zigzagLevelOrder(root));
 
 
     }
 
 }
+
