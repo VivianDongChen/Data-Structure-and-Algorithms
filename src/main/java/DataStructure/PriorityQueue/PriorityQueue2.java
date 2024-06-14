@@ -10,6 +10,7 @@ import DataStructure.Queue.Queue;
  *
  * @param <E> 队列中的元素类型，必须实现Priority接口
  */
+@SuppressWarnings("all")
 public class PriorityQueue2<E extends Priority> implements Queue<E> {
 
     Priority[] array;
