@@ -21,7 +21,7 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
     2. 不断比较新加元素与它父节点（parent）优先级 (上浮）
       - 如果父节点优先级低，则向下移动，并找到下一个parent
       - 直至父节点优先级更高或child = 0为止
-     */
+     */123
     @Override
     public boolean offer(E offered) {
         if(isFull()){
