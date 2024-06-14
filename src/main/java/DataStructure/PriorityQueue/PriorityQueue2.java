@@ -30,7 +30,7 @@ public class PriorityQueue2<E extends Priority> implements Queue<E> {
         return true;
     }
 
-    /**
+    /*
      *                               i
      * index         0   1   2   3   4
      * E(priority)   1   4   5   8  10
@@ -46,7 +46,7 @@ public class PriorityQueue2<E extends Priority> implements Queue<E> {
         array[i+1] = e;
     }
 
-    /**
+    /*
      * 时间复杂度：O(1)
      */
     @Override

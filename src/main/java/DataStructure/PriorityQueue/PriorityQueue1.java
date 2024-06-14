@@ -36,13 +36,12 @@ public class PriorityQueue1<E extends Priority> implements Queue<E> {
         return true;
     }
 
-    /**
+    /*
      * index         0   1   2   3   4   5   6
      * E(priority)   4   2   1   5   10  7   3
      *              max
      *                   i
      * 返回优先级最高的索引值
-     * @return 优先级最高的索引值
      */
     private int selectMax(){
         int max = 0;
@@ -54,9 +53,8 @@ public class PriorityQueue1<E extends Priority> implements Queue<E> {
         return max;
     }
 
-    /**
+    /*
      * 必须先找到优先级最高的，时间复杂度：O（n）
-     * @return
      */
     @Override
     public E poll() {
@@ -69,7 +67,7 @@ public class PriorityQueue1<E extends Priority> implements Queue<E> {
         return e;
     }
 
-    /**
+    /*
      * index         0   1   2   3   4   5   6
      * E(priority)   4   2   1   5   10  7   3
      *                              index

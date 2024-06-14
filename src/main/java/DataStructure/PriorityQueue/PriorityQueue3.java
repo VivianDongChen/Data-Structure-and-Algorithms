@@ -17,11 +17,13 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
     }
 
     /*
+    时间复杂度：O（logn）
     1. 入堆新元素，加入到数组末尾（索引位置 child）
-    2. 不断比较新加元素与它父节点（parent）优先级 (上浮）
+    2. (上浮）
+        不断比较新加元素与它父节点（parent）优先级
       - 如果父节点优先级低，则向下移动，并找到下一个parent
       - 直至父节点优先级更高或child = 0为止
-     */123
+     */
     @Override
     public boolean offer(E offered) {
         if(isFull()){
@@ -39,6 +41,7 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
     }
 
     /*
+    时间复杂度 ：O（logn)
     1. 交换堆顶和尾部元素，让尾部元素出队
     2. （下潜）
       - 从堆顶开始，将父元素与两个孩子较大者交换
@@ -67,18 +70,27 @@ public class PriorityQueue3<E extends Priority> implements Queue<E> {
     private void down(int parent){
         int left = parent*2 + 1;
         int right = left + 1;
-        while(parent != size-1 && (parent < left || parent < right)){
-            int max = Math.max(left, right);
-            array[parent] = array[max];
-            parent = max;
-            left = parent*2 + 1;
-            right = parent*2 + 2;
+        int max = parent;   //假设父元素优先级最高
+        if(left < size && array[left].priority() > array[max].priority()){
+            max = left;
         }
+        if(right < size && array[right].priority() > array[max].priority()){
+            max = right;
+        }
+        if(max != parent){   //有孩子比父亲大
+            swap(max,parent);
+            down(max);
+        }
+
     }
 
     @Override
     public E peek() {
-        return null;
+        if(isEmpty()){
+            return null;
+        }
+
+        return (E) array[0];
     }
 
     @Override
