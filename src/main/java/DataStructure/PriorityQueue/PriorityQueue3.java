@@ -3,7 +3,7 @@ package DataStructure.PriorityQueue;
 import DataStructure.Queue.Queue;
 
 /**
- * 用大顶堆（max heap）来实现优先级队列
+ * 用大顶堆（MaxHeap）来实现优先级队列
  * @param <E> 队列中的元素类型，必须实现Priority接口
  */
 @SuppressWarnings("all")

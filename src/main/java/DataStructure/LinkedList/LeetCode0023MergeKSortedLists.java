@@ -1,6 +1,6 @@
 package DataStructure.LinkedList;
 
-public class LeetCode0023MergekSortedLists {
+public class LeetCode0023MergeKSortedLists {
 
     public ListNode mergeTwoLists(ListNode p1, ListNode p2){
         ListNode s = new ListNode(-1,null);
@@ -62,7 +62,7 @@ public class LeetCode0023MergekSortedLists {
                 ListNode.of(1,3,4),
                 ListNode.of(2,6)
         };
-        ListNode m = new LeetCode0023MergekSortedLists().mergeKLists(lists);
+        ListNode m = new LeetCode0023MergeKSortedLists().mergeKLists(lists);
         System.out.println(m);
     }
 

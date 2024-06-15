@@ -12,7 +12,7 @@ public class ListNode {
     }
 
     // Utility method to create a linked list from an array of values
-    static ListNode of(int... values) {
+    public static ListNode of(int... values) {
         if (values.length == 0) return null;
         ListNode head = new ListNode(values[0], null);
         ListNode current = head;
