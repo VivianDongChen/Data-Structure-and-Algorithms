@@ -147,6 +147,10 @@ public class MinHeap {
 
     }
 
+    public boolean isFull(){
+        return size == array.length;
+    }
+
 
     public static void main(String[] args) {
         int[] array = {1,3,4,7,5,2,6};
