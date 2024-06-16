@@ -14,10 +14,10 @@ public class HeapSort {
         MaxHeap maxHeap = new MaxHeap(array);
 ;        while (maxHeap.size > 1) {
             maxHeap.swap(0, maxHeap.size-1);
-            maxHeap.size--;    //size变量用于控制堆的逻辑大小，而不是数组的物理大小
+            maxHeap.size--;
             maxHeap.down(0);
         }
-        return maxHeap.array;
+        return maxHeap.array;    //size变量用于控制堆的逻辑大小，而不是数组的物理大小
     }
 
     public static void main(String[] args) {
