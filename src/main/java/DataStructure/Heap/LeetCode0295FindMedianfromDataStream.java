@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 //数据流的中位数
 public class LeetCode0295FindMedianfromDataStream {
-    private MinHeap right;
-    private MaxHeap left;
+    private Heap right;
+    private Heap left;
 
     public LeetCode0295FindMedianfromDataStream(){
-        right = new MinHeap(10);
-        left = new MaxHeap(10);
+        left = new Heap(10,true);
+        right = new Heap(10,false);
+
     }
+
     /*
        1    2    3      7    8    9
 
@@ -28,7 +30,7 @@ public class LeetCode0295FindMedianfromDataStream {
      */
 
     public void addNum(int num){
-        if(right.size == left.size){
+        if(right.size() == left.size()){
             right.offer(num);
             left.offer(right.poll());
         } else {
@@ -38,7 +40,7 @@ public class LeetCode0295FindMedianfromDataStream {
     }
 
     public double findMedian(){
-        if(right.size == left.size){
+        if(right.size() == left.size()){
             return (right.peek() + left.peek()) / 2.0;
         }else{
             return left.peek();
