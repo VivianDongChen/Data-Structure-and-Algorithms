@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 二叉树遍历 - 非递归实现
+ */
 public class TreeTraversal2 {
 
     private static void traversal(TreeNode node){
