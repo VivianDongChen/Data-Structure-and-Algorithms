@@ -1,17 +1,10 @@
 package DataStructure.Heap;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 //数据流的中位数
-public class LeetCode0295FindMedianfromDataStream {
-    private Heap right;
-    private Heap left;
-
-    public LeetCode0295FindMedianfromDataStream(){
-        left = new Heap(10,true);
-        right = new Heap(10,false);
-
-    }
+public class LeetCode0295FindMedianfromDataStream2 {
 
     /*
        1    2    3      7    8    9
@@ -28,6 +21,12 @@ public class LeetCode0295FindMedianfromDataStream {
        - 左边个数加1时，应该挑右边最小的加入（先将数据加入右边，再把右边堆顶的取出来加入左边）
        - 右边个数加1时，应该挑左边最大的加入（先将数据加入左边，再把左边堆顶的取出来加入右边）
      */
+
+    private PriorityQueue<Integer> right = new PriorityQueue<>();  //小顶堆
+    private PriorityQueue<Integer> left = new PriorityQueue<>((a,b)->Integer.compare(b,a));  //大顶堆
+
+
+
 
     public void addNum(int num){
         if(right.size() == left.size()){
@@ -49,12 +48,12 @@ public class LeetCode0295FindMedianfromDataStream {
 
     @Override
     public String toString() {
-        return  Arrays.toString(Arrays.copyOf(left.array, left.size)) + " <-> " +
-                Arrays.toString(Arrays.copyOf(right.array, right.size));
+        return  Arrays.toString(left.toArray()) + " <-> " +
+                Arrays.toString(right.toArray());
     }
 
     public static void main(String[] args) {
-        LeetCode0295FindMedianfromDataStream test = new LeetCode0295FindMedianfromDataStream();
+        LeetCode0295FindMedianfromDataStream2 test = new LeetCode0295FindMedianfromDataStream2();
         test.addNum(1);
         test.addNum(2);
         test.addNum(3);
