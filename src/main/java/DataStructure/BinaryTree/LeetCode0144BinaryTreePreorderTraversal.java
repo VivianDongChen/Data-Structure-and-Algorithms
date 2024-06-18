@@ -8,7 +8,7 @@ import java.util.List;
  * 二叉树前序遍历 - 非递归
  */
 public class LeetCode0144BinaryTreePreorderTraversal {
-    public static List<Integer> preOrderTraversal(TreeNode root){
+    public static List<Integer> preorderTraversal(TreeNode root){
         List<Integer> result = new ArrayList<>();
         traversal(result,root);
         return result;
@@ -42,7 +42,7 @@ public class LeetCode0144BinaryTreePreorderTraversal {
                                 3,
                                 new TreeNode(6))
                 );
-        List<Integer> result= preOrderTraversal(root);
+        List<Integer> result= preorderTraversal(root);
 
         for(int num : result){
             System.out.print(num + "\t");
