@@ -1,5 +1,8 @@
 package DataStructure.BinaryTree;
 
+/**
+ * 二叉树遍历 - 递归实现
+ */
 public class TreeTraversal {
 
     public static void main(String[] args) {
