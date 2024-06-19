@@ -3,7 +3,7 @@ package DataStructure.BinaryTree;
 import java.util.Arrays;
 
 //根据前序、中序遍历结果构造二叉树
-public class Leetcode0105ConstructBinaryTreefromPreorderandInorderTraversal {
+public class LeetCode0105ConstructBinaryTreefromPreorderAndInorderTraversal {
 
     /*
        preOrder = {1,2,4,3,6，7}
