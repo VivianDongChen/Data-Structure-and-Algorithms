@@ -12,6 +12,9 @@ public class LeetCode0104MaximumDepthOfBinaryTree3 {
      */
 
     public int maxDepth(TreeNode root){
+        if (root == null){
+            return 0;
+        }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         int maxDepth = 0;
