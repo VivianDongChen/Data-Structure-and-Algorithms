@@ -29,6 +29,7 @@ public class ExpressionTree {
 
 
     }
+
     /*
            中缀表达式     （2-1）*3
            后缀表达式      21-3*
@@ -61,7 +62,7 @@ public class ExpressionTree {
      */
 
 
-    public TreeNode contructExpressionTree(String[] tokens){
+    public TreeNode constructExpressionTree(String[] tokens){
 
         LinkedList<TreeNode> stack = new LinkedList<>();
 
