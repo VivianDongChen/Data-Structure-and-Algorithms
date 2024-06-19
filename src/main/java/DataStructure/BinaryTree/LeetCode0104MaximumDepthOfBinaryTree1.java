@@ -3,7 +3,7 @@ package DataStructure.BinaryTree;
 import static java.lang.Math.max;
 
 /**
- * 二叉树最大深度 - 使用后序遍历求解(递归）
+ * 二叉树最大深度 - 使用后序遍历(递归）求解
  */
 public class LeetCode0104MaximumDepthOfBinaryTree1 {
 
