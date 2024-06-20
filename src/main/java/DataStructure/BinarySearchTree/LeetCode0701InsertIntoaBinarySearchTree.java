@@ -44,9 +44,6 @@ public class LeetCode0701InsertIntoaBinarySearchTree {
 
     /**
      * 非递归实现
-     * @param root
-     * @param val
-     * @return
      */
     public TreeNode insertIntoBST2(TreeNode root,int val){
         if(root == null){

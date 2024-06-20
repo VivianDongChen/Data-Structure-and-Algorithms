@@ -1,5 +1,8 @@
 package DataStructure.BinarySearchTree;
 
+/**
+ * 删除节点
+ */
 public class LeetCode0450DeleteNodeInaBST {
 
     static class TreeNode {
@@ -17,9 +20,6 @@ public class LeetCode0450DeleteNodeInaBST {
 
     /**
      * 递归实现
-     * @param node
-     * @param key
-     * @return
      */
     public TreeNode deleteNode1(TreeNode node, int key){
         if(node == null){
@@ -54,9 +54,6 @@ public class LeetCode0450DeleteNodeInaBST {
 
     /**
      * 非递归实现
-     * @param root
-     * @param key
-     * @return
      */
     public TreeNode deleteNode2(TreeNode root, int key){
         TreeNode p = root;
