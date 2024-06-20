@@ -1,6 +1,9 @@
 package DataStructure.BinarySearchTree;
 
-import DataStructure.BinaryTree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Binary Search Tree 二叉搜索树
@@ -150,7 +153,7 @@ public class BSTTree1 {
     }
 
     /**
-     * 存储关键字和对应值 - 非递归
+     * 存储关键字和对应值
      * @param key 关键字
      * @param value 值
      */
@@ -250,7 +253,7 @@ public class BSTTree1 {
      * @param key 关键字
      * @return 被删除关键字对应值
      */
-    public Object delete(int key){
+    public Object delete1(int key){
         BSTNode p = root;
         BSTNode parent = null;   //记录目标节点的父节点
         while(p != null){
@@ -275,9 +278,9 @@ public class BSTTree1 {
             shift(parent, p, p.left);
         }else{                          //情况4： 被删除的节点左右孩子都有
             //4.1 被删除节点右子树找后任(或者左子树找前任也可以，这里以后任为例）
-            BSTNode s = p.left;
+            BSTNode s = p.right;
             BSTNode sParent = p; //后继节点的父亲
-            while(s != null){
+            while(s.left != null){
                 sParent = s;
                 s = s.left;
             }
@@ -311,6 +314,193 @@ public class BSTTree1 {
             parent.right = child;
         }
 
+    }
+
+    /**
+     * 根据关键字删除 - 递归
+     * @param key 关键字
+     * @return 被删除关键字对应值
+     */
+    public Object delete2(int key){
+        ArrayList<Object> result = new ArrayList<>();
+        root = doDelete(root, key, result);
+        return result.isEmpty() ? null: result.get(0);
+    }
+
+    /**
+     *         4
+     *       /   \
+     *      2     6
+     *     /       \
+     *    1         7
+     *
+     * 根据关键字删除 - 递归
+     * @param node 起点
+     * @param key 关键字
+     * @return 删剩下的孩子(找到）或null（没找到）
+     */
+    private BSTNode doDelete(BSTNode node, int key, ArrayList<Object> result){
+        if(node == null){
+            return null;
+        }
+        if(key < node.key){
+            node.left = doDelete(node.left, key, result);
+            return node;
+        }
+        if(node.key < key){
+            node.right = doDelete(node.right,key, result);
+            return node;
+        }
+        result.add(node.value);
+        //情况1 - 只有右孩子
+        if(node.left == null){
+            return node.right;
+        }
+        //情况2 - 只有左孩子
+        if(node.right == null){
+            return node.left;
+        }
+        //情况3 - 有两个孩子
+        BSTNode s = node.right;   //找后继节点
+        while(s. left != null){
+            s = s.left;
+        }
+
+        s.right = doDelete(node.right,s.key ,new ArrayList<>());
+        s.left = node.left;
+
+        return s;
+    }
+
+    /*
+     *   找一个区间key对应的值
+     *   思路：
+     *   - 中序遍历BST：key由小到大
+     *   - 反向中序遍历BST：key由大到小
+     *
+     *
+     *             4
+     *           /   \
+     *          2     6
+     *        /  \   / \
+     *       1   3  5   7
+     *
+     */
+
+
+    /**
+     * 找 < key 的所有value - 中序遍历BST
+     * @param key 关键字
+     * @return 所有value
+     */
+    public List<Object> less(int key){     //key = 6
+        ArrayList<Object> result = new ArrayList<>();
+
+        BSTNode p = root;
+        LinkedList<BSTNode> stack = new LinkedList<>();
+        while(p != null || !stack.isEmpty()){
+            if(p != null){
+                stack.push(p);
+                p = p.left;
+            }else{
+                BSTNode pop = stack.pop();
+                //处理值
+                if(pop.key < key){
+                    result.add(pop.value);
+                }else{
+                    break;       // 一但 >= key, 后面的都 >=key 了， 就可以停止遍历了
+                }
+                p = pop.right;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 找 > key 的所有value - 中序遍历BST （遍历不可以提前结束，效率低）
+     * @param key 关键字
+     * @return 所有value
+     */
+    public List<Object> greater1(int key){
+        ArrayList<Object> result = new ArrayList<>();
+
+        BSTNode p = root;
+        LinkedList<BSTNode> stack = new LinkedList<>();
+        while(p != null || !stack.isEmpty()){
+            if(p != null){
+                stack.push(p);
+                p = p.left;
+            }else{
+                BSTNode pop = stack.pop();
+                //处理值
+                if(pop.key > key){
+                    result.add(pop.value);
+                }
+                p = pop.right;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 找 > key 的所有value - 反向中序遍历BST （遍历可以提前结束，效率高））
+     * @param key 关键字
+     * @return 所有value
+     */
+    public List<Object> greater2(int key){
+        ArrayList<Object> result = new ArrayList<>();
+
+        BSTNode p = root;
+        LinkedList<BSTNode> stack = new LinkedList<>();
+        while(p != null || !stack.isEmpty()){
+            if(p != null){
+                stack.push(p);
+                p = p.right;
+            }else{
+                BSTNode pop = stack.pop();
+                //处理值
+                if(pop.key > key){
+                    result.add(pop.value);
+                }else{
+                    break;   // 一但 <= key, 后面的都 <=key 了， 就可以停止遍历了
+                }
+                p = pop.left;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * 找 >= key1 && <= key2 的所有value - 中序遍历BST
+     * @param key1 关键字1
+     * @param key2 关键子2
+     * @return 所有value
+     */
+    public List<Object> between(int key1, int key2){
+        ArrayList<Object> result = new ArrayList<>();
+
+        BSTNode p = root;
+        LinkedList<BSTNode> stack = new LinkedList<>();
+        while(p != null || !stack.isEmpty()){
+            if(p != null){
+                stack.push(p);
+                p = p.left;
+            }else{
+                BSTNode pop = stack.pop();
+                //处理值
+                if(pop.key <= key2 && key1 <= pop.key){
+                    result.add(pop.value);
+                }else if(pop.key > key2){
+                    break;        // 一但 >= key2, 后面的都 >= key2 了， 就可以停止遍历了
+                }
+                p = pop.right;
+            }
+        }
+
+        return result;
     }
 
 
