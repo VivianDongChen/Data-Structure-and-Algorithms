@@ -1,4 +1,4 @@
-package DataStructure.LinkedList;
+package DataStructure.Heap.LinkedList;
 
 //根据值删除节点
 public class LeetCode0203RemoveLinkedListElements {

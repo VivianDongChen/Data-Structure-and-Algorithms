@@ -1,4 +1,4 @@
-package DataStructure.LinkedList;
+package DataStructure.Heap.LinkedList;
 
 
 //LeetCode很多链表题目用到的节点类

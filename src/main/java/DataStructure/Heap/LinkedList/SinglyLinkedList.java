@@ -1,4 +1,4 @@
-package DataStructure.LinkedList;
+package DataStructure.Heap.LinkedList;
 
 
 import java.util.Iterator;

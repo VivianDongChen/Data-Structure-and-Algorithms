@@ -1,4 +1,4 @@
-package DataStructure.LinkedList;
+package DataStructure.Heap.LinkedList;
 
 //反转链表
 public class LeetCode0206ReverseLinkedList {

@@ -1,8 +1,6 @@
 package DataStructure.PriorityQueue;
 
-import DataStructure.LinkedList.ListNode;
-
-import java.util.List;
+import DataStructure.Heap.LinkedList.ListNode;
 
 public class LeetCode0023MergeKSortedLists {
 

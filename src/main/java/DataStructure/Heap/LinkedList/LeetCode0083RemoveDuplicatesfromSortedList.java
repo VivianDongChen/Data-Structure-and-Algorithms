@@ -1,4 +1,4 @@
-package DataStructure.LinkedList;
+package DataStructure.Heap.LinkedList;
 
 //删除重复元素保留1个
 public class LeetCode0083RemoveDuplicatesfromSortedList {
