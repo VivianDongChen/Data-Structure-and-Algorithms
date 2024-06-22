@@ -169,7 +169,6 @@ public class AVLTree {
 
     /**
      * 删除节点
-     * @param key
      */
     public void remove(int key) {
         root = doRemove(root,key);
@@ -188,7 +187,7 @@ public class AVLTree {
             node.right = doRemove(node.right,key);
         }else{
             //3. 找到key 1）没有孩子 2）只有一个孩子 3）有两个孩子
-            if(node.left == null && node.left == null){
+            if(node.left == null && node.right == null){
                 return null;
             }else if(node.left == null){
                 node = node.right;   //没有立即返回，而是要指向下面的更新高度和balance
