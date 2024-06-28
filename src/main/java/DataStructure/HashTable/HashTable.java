@@ -1,5 +1,13 @@
 package DataStructure.HashTable;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /**
  * 哈希表
  *
@@ -147,23 +155,6 @@ public class HashTable {
                     newTable[i+ table.length] = bHead;
                 }
             }
-
-            /*
-                为什么计算索引位置用式子：【hash & (数组长度-1)】 等价于 【hash % 数组长度】
-                    10进制中去除以 10，100，1000时，余数就是被除数的后1，2，3 位
-                                10^1 10^2 10^3
-                    2进制中去除以 10，100，1000时，余数也是被除数的后1，2，3 位
-                                2^1 2^2 2^3 2^4
-                    因此求余数就是求二进制的后几位，而保留二进制后几位可以通过与
-                    1，3，7，11 ... 等数字按位与来实现，这些数字恰巧是数组长度-1
-
-                为什么旧日链表会拆分成两条，一条 hash & 旧数组长度==0 另一条！=0 ?
-                为什么拆分后的两条链表，一个原索引不变，另一个是原索引+旧数组长度
-
-                它们都有个共同的前提：数组长度是2的n次方
-             */
-
-            
         }
         table = newTable;
         threshold = (int)(loadFactor * table.length);
@@ -197,5 +188,80 @@ public class HashTable {
         return null;
     }
 
+    /*
+                1）为什么计算索引位置用式子：【hash & (数组长度-1)】 等价于 【hash % 数组长度】
+                    10进制中去除以 10，100，1000时，余数就是被除数的后1，2，3 位
+                                10^1 10^2 10^3
+                    2进制中去除以 10，100，1000时，余数也是被除数的后1，2，3 位
+                                2^1 2^2 2^3 2^4
+                    因此求余数就是求二进制的后几位，而保留二进制后几位可以通过与
+                    1，3，7，11 ... 等数字按位与来实现，这些数字恰巧是数组长度-1
+
+                2）为什么旧日链表会拆分成两条，一条 hash & 旧数组长度==0 另一条！=0 ?
+                    旧数组长度换算成二进制后，其中的 1 就是我们要检查的倒数第几位
+                    旧数组长度 8 二进制 => 1000 检查倒数第4位
+                    旧数组长度 16 二进制 => 10000 检查倒数第5位
+                    hash & 旧数组长度 就是用来检查扩容前后索引位置（余数）会不会变
+
+                3）为什么拆分后的两条链表，一个原索引不变，另一个是原索引+旧数组长度 ？
+
+                注意：它们都有个共同的前提：数组长度是2的n次方
+             */
+
+    public Object get(Object key){
+        int hash = hash(key);
+        return get(hash,key);
+    }
+
+    public void put(Object key, Object value){
+        int hash = hash(key);
+        put(hash, key,value);
+    }
+    public Object remove(Object key){
+        int hash = hash(key);
+        return remove(hash, key);
+    }
+    private int hash(Object key) {
+        return key.hashCode();
+    }
+
+    /**
+     *
+     */
+    public void print(){
+        int[] sums = new int[table.length];   //创建一个数组，其长度与哈希表的数组长度相同，用于存储每个索引位置上链表中的节点数量。
+        for (int i = 0; i < table.length; i++) {
+            Entry p = table[i];
+            while (p != null){
+                sums[i] ++;
+                p = p.next;
+            }
+        }
+        //将sums数组转换为流，使用Collectors.groupingBy统计每个节点数量出现的次数，并将结果存储在collect映射中。
+        Map<Integer, Long> collect = Arrays.stream(sums).boxed().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        System.out.println(collect);
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        //测试Object哈希算法的散列性能
+        HashTable table1 = new HashTable();
+        for (int i = 0; i < 200000; i++) {
+            Object obj = new Object();
+            table1.put(obj,obj);    //使用一个循环插入20万个键值对，键和值均为新创建的Object对象。
+        }
+        table1.print();
+        //测试String哈希算法的散列性能
+        HashTable table2 = new HashTable();
+        //从文件words中读取所有行，并存储在一个List<String> 中
+        List<String> strings = Files.readAllLines(Path.of
+                ("words"));
+
+        for(String string : strings){
+            table2.put(string, string);
+        }
+
+        table2.print();
+    }
 
 }
