@@ -1,6 +1,9 @@
 package DataStructure.HashTable;
 
+import com.google.common.hash.Hashing;
+
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -76,7 +79,7 @@ public class HashTable {
      * 向hash表存入新key value，
      * - 如果idx处是null， 新增
      * - 如果key重复，则更新value,
-     * - 如果没有找到key，在链表尾部新增
+     * - 如果没有找到key，在链表尾部新增(尾插法）   也可以头插法（JDK的HashTable早期使用的头插法，后来为了避免多线程状态下造成死循环，改成了尾插法）
      */
     void put(int hash, Object key, Object value){
         int idx = hash & (table.length - 1);
@@ -221,13 +224,14 @@ public class HashTable {
         int hash = hash(key);
         return remove(hash, key);
     }
-    private int hash(Object key) {
-        return key.hashCode();
+    private static int hash(Object key) {
+        if(key instanceof String k){   //如果是String类型的key，用murmurHash函数生成hash码
+            return Hashing.murmur3_32_fixed().hashString(k, StandardCharsets.UTF_8).asInt();
+        }
+        return key.hashCode();  //其它类型的key，还是用JDK自带的方式生成hash码
     }
 
-    /**
-     *
-     */
+
     public void print(){
         int[] sums = new int[table.length];   //创建一个数组，其长度与哈希表的数组长度相同，用于存储每个索引位置上链表中的节点数量。
         for (int i = 0; i < table.length; i++) {
@@ -244,24 +248,27 @@ public class HashTable {
     }
 
     public static void main(String[] args) throws IOException {
-        //测试Object哈希算法的散列性能
+
+        //测试Object哈希算法的散列性能(冲突测试）
         HashTable table1 = new HashTable();
         for (int i = 0; i < 200000; i++) {
             Object obj = new Object();
             table1.put(obj,obj);    //使用一个循环插入20万个键值对，键和值均为新创建的Object对象。
         }
         table1.print();
-        //测试String哈希算法的散列性能
+
+        //测试String哈希算法/MurmurHash的散列性能（冲突测试）
         HashTable table2 = new HashTable();
         //从文件words中读取所有行，并存储在一个List<String> 中
         List<String> strings = Files.readAllLines(Path.of
                 ("words"));
-
         for(String string : strings){
             table2.put(string, string);
         }
-
         table2.print();
+
+        int hash = Hashing.murmur3_32_fixed().hashString("abc", StandardCharsets.UTF_8).asInt();
+        System.out.println(hash);
     }
 
 }

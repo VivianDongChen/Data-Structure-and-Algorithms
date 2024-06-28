@@ -3,7 +3,7 @@ package Algorithms.HashingAlgorithm;
 /**
  *  字符串的哈希算法
  */
-public class String {
+public class ObjectAndString {
     public static void main(java.lang.String[] args) {
         // 生成哈希码的方法1: 调用Object的方法hashCode()
         for (int i = 0; i < 10; i++) {
