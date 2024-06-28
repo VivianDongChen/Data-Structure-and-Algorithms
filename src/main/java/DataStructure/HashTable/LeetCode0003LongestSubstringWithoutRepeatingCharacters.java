@@ -48,13 +48,13 @@ public class LeetCode0003LongestSubstringWithoutRepeatingCharacters {
 
      */
     
-    public int lengthOfLongestSubstring(String s){
+    public int lengthOfLongestSubstring1(String s){
         HashMap<Character, Integer> map = new HashMap<>();
         int maxLength = 0;
         int begin = 0;
         for (int end = 0; end < s.length(); end++) {
             char ch = s.charAt(end);
-            if(map.containsKey(ch)){   //有重复
+            if(map.containsKey(ch) && map.get(ch) >= begin){      //有重复
                 begin = map.get(ch)+1;  //begin移动到第一个重复的字符的后面
                 map.put(ch,end);
             }else{    //无重复
@@ -65,9 +65,24 @@ public class LeetCode0003LongestSubstringWithoutRepeatingCharacters {
         return maxLength;
     }
 
+    public int lengthOfLongestSubstring2(String s){
+        int begin = 0;
+        int maxLength = 0;
+        for (int end = 0; end < s.length(); end++) {
+            for (int i = begin; i < end; i++) {
+                if(s.charAt(i) == s.charAt(end)){
+                    begin = i + 1;
+                    break;
+                }
+            }
+            maxLength = Math.max(maxLength, end - begin + 1);
+        }
+        return maxLength;
+    }
+
     public static void main(String[] args) {
         System.out.println(new LeetCode0003LongestSubstringWithoutRepeatingCharacters().
-                lengthOfLongestSubstring("abcabcbb"));
+                lengthOfLongestSubstring2("abba"));
 
 
     }
