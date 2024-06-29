@@ -65,7 +65,31 @@ public class LeetCode0003LongestSubstringWithoutRepeatingCharacters {
         return maxLength;
     }
 
-    public int lengthOfLongestSubstring2(String s){
+    /**
+     * 字符串 s 由英文字母、数字、符号和空格组成，这些字符一共128个，并且它们在内部表示为不重复的128个整数。
+     * 因此可以使用一个长度为128的数组来存储这些字符最近出现的位置。这个数组中的索引代表字符的 ASCII 值，
+     * 值是字符在字符串 s 中对应的索引 + 1。
+     */
+    public int lengthOfLongestSubstring2(String s) {
+        int[] index = new int[128];
+        int maxLength = 0;
+        int begin = 0;
+
+        for (int end = 0; end < s.length(); end++) {
+            char ch = s.charAt(end);
+            if (index[ch] > begin) {      //即 ch之前的索引 >= begin，就是说ch有重复，如果没有重复，index[ch]在赋值前应为0
+                begin = index[ch];    //begin指针 = 之前的索引 + 1
+            }
+            index[ch] = end + 1;     //更新当前字符的最新位置为end + 1，使用end + 1避免与默认值 0 冲突。
+            maxLength = Math.max(maxLength, end - begin + 1);
+        }
+
+        return maxLength;
+    }
+
+
+
+    public int lengthOfLongestSubstring3(String s){
         int begin = 0;
         int maxLength = 0;
         for (int end = 0; end < s.length(); end++) {
