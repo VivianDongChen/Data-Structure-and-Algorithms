@@ -1,4 +1,4 @@
-package Algorithms.HashingAlgorithm;
+package Algorithms.Hashing;
 
 /**
  *  字符串的哈希算法
