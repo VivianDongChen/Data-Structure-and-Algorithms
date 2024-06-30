@@ -43,12 +43,12 @@ public class RecursionInsertSort {
 
         int t = a[low];
         int i = low - 1;
-
+        //自右向左插入位置，如果比待插入元素大，则不断右移， 空出插入位置
         while (i >= 0 && a[i] > t) {
             a[i + 1] = a[i];
             i--;
         }
-
+        //循环结束，表示找到插入位置：i+1
         if (i + 1 != low) {    //如果low的位置没有变化过（没有进入过循环），没必要再赋值一次
             a[i + 1] = t;
         }
