@@ -14,6 +14,7 @@ import java.util.Set;
 public class LeetCode0819MostCommonWord {
 
     /**
+     * 方法1
      *         1. 将 paragraph 截取为一个个单词
      *         2. 将单词加入 map 集合，单词本身作为 key，出现次数作为 value，避免禁用词加入
      *         3. 在 map 集合中找到 value 最大的，返回它对应的 key 即可
@@ -41,10 +42,77 @@ public class LeetCode0819MostCommonWord {
 
     }
 
+    /**
+     * 方法2： 改进版1
+     */
+    public String mostCommonWord2(String paragraph, String[] banned){
+        String[] split = paragraph.toLowerCase().split("[^A-Za-z]+");
+        HashMap<String,Integer> map = new HashMap<>();
+        Set<String> set = Set.of (banned);
+        for(String key: split){
+            if(!set.contains(key)){
+                map.put(key,map.getOrDefault(key,0) + 1);
+            }
+        }
+        //遍历map，找到value最大的
+        int max = 0;
+        String maxKey = null;
+        for(Map.Entry<String, Integer> e: map.entrySet()){
+            if(e.getValue() > max){
+                max = e.getValue();
+                maxKey = e.getKey();
+            }
+        }
+        return maxKey;
+
+    }
+
+    /**
+     * 方法3： 改进版2
+     */
+    public String mostCommonWord3(String paragraph, String[] banned){
+        HashMap<String,Integer> map = new HashMap<>();
+        Set<String> set = Set.of (banned);
+
+        char[] chars = paragraph.toLowerCase().toCharArray();  //将String转化为char[]
+        StringBuilder sb = new StringBuilder();  //逐个字符判断，再用sb组合成字符串
+        for(char ch: chars){
+            if(ch >='a' && ch <='z'){
+                sb.append(ch);
+            }else if(sb.length() > 0){
+                String key = sb.toString();
+                if(!set.contains(key)){
+                    map.put(key,map.getOrDefault(key,0)+1);
+                }
+//                sb = new StringBuilder();
+                sb.setLength(0);
+            }
+
+        }
+        if(sb.length() > 0){   //处理没有非字母字符出现的情况
+            String key = sb.toString();
+            if(!set.contains(key)){
+                map.put(key,map.getOrDefault(key,0)+1);
+            }
+        }
+
+        int max = 0;
+        String maxKey = null;
+        for(Map.Entry<String, Integer> e: map.entrySet()){
+            if(e.getValue() > max){
+                max = e.getValue();
+                maxKey = e.getKey();
+            }
+        }
+        return maxKey;
+
+    }
+
     public static void main(String[] args) {
         LeetCode0819MostCommonWord test = new LeetCode0819MostCommonWord();
-        String key = test.mostCommonWord1("Bob hit a ball, the hit BALL flew far after it was hit.", new String[]{"hit"});
-//        String key = e08.mostCommonWord("Bob", new String[]{"hit"});
-        System.out.println(key); // ball
+        String key1 = test.mostCommonWord3("Bob hit a ball, the hit BALL flew far after it was hit.", new String[]{"hit"});
+        String key2 = test.mostCommonWord3("Bob", new String[]{"hit"});
+        System.out.println(key1); // ball
+        System.out.println(key2); // Bob
     }
 }
