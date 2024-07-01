@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * 归并排序- 自下而上
  * 规律：不需要进行”分“，有序数组区间的宽度规律是：从1个节点到2个节点到4个节点...
+ * 最好：O（nlogn)  最坏： O (nlogn)   平均：O (nlogn)   空间：O（n）
  */
 public class MergeSortBottomUp {
 
