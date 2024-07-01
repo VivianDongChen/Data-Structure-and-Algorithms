@@ -3,7 +3,7 @@ package Algorithms.Sorting;
 import java.util.Arrays;
 
 /**
- * 归并排序
+ * 归并排序 (TopDown)
  * 最好：O（nlogn)  最坏： O (nlogn)   平均：O (nlogn)   空间：O（n）
  */
 public class MergeSort {
