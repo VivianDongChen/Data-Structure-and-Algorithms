@@ -3,18 +3,18 @@ package Algorithms.Sorting;
 import java.util.Arrays;
 
 /**
- * 归并排序 (TopDown)
+ * 归并排序 - 自上而下（分而治之）
  * 最好：O（nlogn)  最坏： O (nlogn)   平均：O (nlogn)   空间：O（n）
  */
-public class MergeSort {
+public class MergeSortTopDown {
 
     /**
      * 合并有序数组
      * @param a1 原始数组
-     * @param i 第一个有序的头
-     * @param iEnd 第一个有序的尾
-     * @param j 第二个有序的头
-     * @param jEnd 第二个有序的尾
+     * @param i 第一个有序区间的头
+     * @param iEnd 第一个有序区间的尾
+     * @param j 第二个有序区间的头
+     * @param jEnd 第二个有序区间的尾
      * @param a2 临时数组
      */
     public static void merge(int[] a1, int i, int iEnd,int j, int jEnd, int[] a2){
