@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 希尔排序--改良版的插入排序， 每个元素交换的次数更少
+ * 最好：O（nlogn)  最坏： O(n^2)   平均：O(nlogn)   空间：O（1）
  */
 public class ShellSort {
     public static void sort1(int[] a){

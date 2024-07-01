@@ -2,6 +2,10 @@ package Algorithms.Sorting;
 
 import java.util.Arrays;
 
+/**
+ * 堆排序
+ * 最好：O（nlogn)  最坏： O (nlogn)   平均：O (nlogn)   空间：O（1）
+ */
 public class HeapSort {
     public static void sort(int[] a){
         heapify(a, a.length);  //将数组建堆，这时数组的第一个是最大值

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 选择排序
+ * 最好：O（n^2)  最坏： O(n^2)   平均：O(n^2)   空间：O（1）
  */
 public class SelectionSort {
     public static void sort(int[] a){

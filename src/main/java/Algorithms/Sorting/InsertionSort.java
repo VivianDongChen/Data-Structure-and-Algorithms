@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 插入排序（非递归实现）
+ * 最好：O（n)  最坏： O(n^2)   平均：O(n^2)   空间：O（1）
  */
 public class InsertionSort {
     public static void sort(int[] a){
