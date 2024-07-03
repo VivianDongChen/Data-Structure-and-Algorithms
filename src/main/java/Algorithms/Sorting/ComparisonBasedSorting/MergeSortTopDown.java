@@ -1,33 +1,22 @@
-package Algorithms.Sorting;
+package Algorithms.Sorting.ComparisonBasedSorting;
 
 import java.util.Arrays;
 
 /**
- * 归并排序（适合数据量大的排序算法） + 插入排序（适合数据量少的排序算法））
+ * 归并排序 - 自上而下
+ * 最好：O（nlogn)  最坏： O (nlogn)   平均：O (nlogn)   空间：O（n）
  */
-public class MergeInsertionSort {
+public class MergeSortTopDown {
 
     /**
-     * 改造的插入排序
-     * @param a
-     * @param left
-     * @param right
+     * 合并有序数组
+     * @param a1 原始数组
+     * @param i 第一个有序区间的头
+     * @param iEnd 第一个有序区间的尾
+     * @param j 第二个有序区间的头
+     * @param jEnd 第二个有序区间的尾
+     * @param a2 临时数组
      */
-    public static void insertion(int[] a, int left, int right){
-        for (int low = left + 1; low <= right; low++) {
-            int t = a[low];
-            int i = low - 1;
-            while(i >= left && a[i] > t){
-                a[i+1] = a[i];
-                i--;
-            }
-
-            if(i != low - 1){
-                a[i+1] = t;
-            }
-        }
-    }
-
     public static void merge(int[] a1, int i, int iEnd,int j, int jEnd, int[] a2){
         int k = i;
         while(i <= iEnd && j <= jEnd){
@@ -55,10 +44,8 @@ public class MergeInsertionSort {
     }
 
     private static void split(int[] a1, int left, int right, int[] a2){
-
-        //2. 治 (当区间足够小时，用插入排序来实现排序）
-        if(right - left <= 32){
-            insertion(a1,left,right);
+        //2. 治
+        if(left == right){
             return;
         }
 
@@ -78,5 +65,4 @@ public class MergeInsertionSort {
         sort(a);
         System.out.println(Arrays.toString(a));
     }
-
 }
