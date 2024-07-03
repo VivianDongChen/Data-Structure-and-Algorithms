@@ -12,6 +12,10 @@ public class DynamicArray implements Iterable<Integer>{
     private int capacity = 8; //容量
     private int[] array = {};   //一开始先给一个空数组，避免浪费，在第一次添加的时候再给一个容量为capacity的数组
 
+    public int[] array() {
+        return Arrays.copyOf(array,size);
+    }
+
     /**
      * 向最后位置[size]添加元素
      *››
@@ -118,6 +122,5 @@ public class DynamicArray implements Iterable<Integer>{
 //        return IntStream.of(array);
         return IntStream.of(Arrays.copyOfRange(array,0,size));
     }
-
 
 }
