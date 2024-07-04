@@ -1,4 +1,4 @@
-package Algorithms.Sorting;
+package Algorithms.Sorting.NonComparisonBasedSorting;
 
 import java.util.Arrays;
 

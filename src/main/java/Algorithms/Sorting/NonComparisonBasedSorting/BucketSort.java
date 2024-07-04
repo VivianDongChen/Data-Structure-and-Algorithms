@@ -1,4 +1,4 @@
-package Algorithms.Sorting;
+package Algorithms.Sorting.NonComparisonBasedSorting;
 
 import Algorithms.Sorting.ComparisonBasedSorting.InsertionSort;
 import DataStructure.Array.DynamicArray;
