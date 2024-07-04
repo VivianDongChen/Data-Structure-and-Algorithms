@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 解法2: 基数排序(全部都是数字的话，准备10个桶就够了）
+ * 弊端：基数排序时间复杂度O(kn)比桶排序0(n)还是差一些
  */
 public class LeetCode0164MaximumGap2 {
     public int maximumGap(int[] nums){
@@ -25,7 +26,7 @@ public class LeetCode0164MaximumGap2 {
         for (int i = 0; i < 10; i++) {
             buckets[i] = new ArrayList<>();
         }
-        //2.3 循环：每一轮基数排序（个位、十位、百位...)
+        //2.3 循环：每一轮基数排序（个位、十位、百位...) O（kn）
 
         /*
         如何获取一个数字的个位、十位、百位、千位...：

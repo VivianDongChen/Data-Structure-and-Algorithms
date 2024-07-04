@@ -6,18 +6,16 @@ import DataStructure.Array.DynamicArray;
 import java.util.Arrays;
 
 /**
- * 解法1: 桶排序
- * 弊端：桶的个数过多，有可能超出内存限制
+ * 解法3: 桶排序(改进版）计算出合适的range
  */
-public class LeetCode0164MaximumGap1 {
+public class LeetCode0164MaximumGap3 {
     public int maximumGap(int[] nums){
         //1. 处理特殊情况
         if(nums.length < 2){
             return 0;
         }
         //2. 桶排序
-        //加入参数range，可以优化空间的占用
-        //1. 计算出最大最小值
+        //2.1 计算出最大最小值
         int max = nums[0];
         int min = nums[0];
         for (int i1 = 1; i1 < nums.length; i1++) {
@@ -28,19 +26,28 @@ public class LeetCode0164MaximumGap1 {
                 min = nums[i1];
             }
         }
-        //2. 准备桶（根据最大最小值计算需要多少个桶）
-        DynamicArray[] buckets = new DynamicArray[(max - min)/ 1 + 1];
-        for (int i1 = 0; i1 < buckets.length; i1++) {
-            buckets[i1] = new DynamicArray();
+        //2.2 准备桶
+
+        /*
+           计算桶个数                       期望桶的个数
+          （max - min) / range + 1         nums.length
+
+          （max -min) / range + 1 = nums.length
+           range = (max -min) / (nums.length - 1)
+         */
+
+        int range = Math.max(1,(max - min) / (nums.length - 1));  //range至少为1，避免除零异常
+        DynamicArray[] buckets = new DynamicArray[(max - min) / range + 1];
+        for (int i = 0; i < buckets.length; i++) {
+            buckets[i] = new DynamicArray();
         }
-        //3. 放入年龄数据
-        for(int age : nums){
-            buckets[(age - min)/ 1] .addLast(age);  // 计算应该放入哪个桶
+        //3. 放入数据
+        for(int i : nums){
+            buckets[(i - min) / range] .addLast(i);  // 计算应该放入哪个桶
         }
 
         int k = 0;
         for(DynamicArray bucket : buckets){
-//            System.out.println(Arrays.toString(bucket.array()));
             //4. 排序桶内元素
             int[] array = bucket.array();
             InsertionSort.sort(array);
@@ -51,6 +58,7 @@ public class LeetCode0164MaximumGap1 {
             }
         }
         System.out.println(Arrays.toString(nums));
+
         //3. 寻找最大差值
         int r = 0;
         for (int i = 1; i < nums.length; i++) {
@@ -60,9 +68,9 @@ public class LeetCode0164MaximumGap1 {
     }
 
     public static void main(String[] args) {
-//        int[] nums = {9,1,3,5};
-        int[] nums = {1, 10000000};  //弊端：桶的个数过多，有可能超出内存限制
-        int r = new LeetCode0164MaximumGap1().maximumGap(nums);
+//        int[] nums = {1, 10000000};
+        int[] nums = {1,1,1,1,1};
+        int r = new LeetCode0164MaximumGap3().maximumGap(nums);
         System.out.println(r);
     }
 }

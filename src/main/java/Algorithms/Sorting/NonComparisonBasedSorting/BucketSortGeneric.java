@@ -8,12 +8,12 @@ import java.util.Arrays;
 /**
  * 桶排序（改进版）
  * - 让数据在桶里分布的更均匀
- * - 同时考虑到空间问题
+ * - 同时考虑到空间问题, 加入参数range，可以优化空间的占用
  */
 public class BucketSortGeneric {
 
     public static void main(String[] args) {
-        int[] ages = {9,0,5,1,3,2,4,6,8,7};
+        int[] ages = {9, 0, 5, 1, 3, 2, 4, 6, 8, 7};
         System.out.println(Arrays.toString(ages));
         sort(ages, 3);
         System.out.println(Arrays.toString(ages));
