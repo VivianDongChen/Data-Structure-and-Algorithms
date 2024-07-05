@@ -41,18 +41,18 @@ public class LeetCode0164MaximumGap3 {
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new DynamicArray();
         }
-        //3. 放入数据
+        //2.3 放入数据
         for(int i : nums){
             buckets[(i - min) / range] .addLast(i);  // 计算应该放入哪个桶
         }
 
         int k = 0;
         for(DynamicArray bucket : buckets){
-            //4. 排序桶内元素
+            //2.4. 排序桶内元素
             int[] array = bucket.array();
             InsertionSort.sort(array);
             System.out.println(Arrays.toString(array));
-            //5. 把每个桶排序好的内容，依次放入原数组
+            //2.5. 把每个桶排序好的内容，依次放入原数组
             for(int v : array){
                 nums[k++] = v;
             }
