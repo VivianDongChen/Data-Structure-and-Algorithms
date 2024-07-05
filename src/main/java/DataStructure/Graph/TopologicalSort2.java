@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *  使用拓扑排序来检测环
+ *  使用拓扑排序(Kahn's algorithm)来检测环
  */
 public class TopologicalSort2 {
     public static void main(String[] args) {
