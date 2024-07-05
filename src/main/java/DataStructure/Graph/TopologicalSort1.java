@@ -5,9 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 拓扑排序
+ * 拓扑排序 -Kahn's algorithm
+ * 前提条件：图中不能有环，有环的话就有顶点的入度不能减到0，一旦出现这种情况，排序就会中断
  */
-public class TopologicalSort {
+public class TopologicalSort1 {
 
     public static void main(String[] args) {
         Vertex v1 = new Vertex("网页基础");
