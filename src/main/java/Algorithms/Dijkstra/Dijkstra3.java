@@ -1,15 +1,15 @@
 import DataStructure.Graph.Edge;
 import DataStructure.Graph.Vertex;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
- * 迪科斯特拉 - 改进版1
- * - 加入prev，记录最短路径从哪里来
- * - 换一种方式来判断顶点已经被移除了, 这样list参数就不用进行传递了
+ * 迪科斯特拉 - 改进版2
+ * - 使用优先级队列来确定当前顶点（临时距离最小的那个就是）
  */
-public class Dijkstra2 {
+public class Dijkstra3 {
 
     public static void main(String[] args) {
         Vertex v1 = new Vertex("v1");
@@ -40,44 +40,38 @@ public class Dijkstra2 {
     }
 
     private static void dijkstra(List<Vertex> graph, Vertex source) {
-        ArrayList<Vertex> list = new ArrayList<>(graph);
+        PriorityQueue<Vertex> queue = new PriorityQueue<>(Comparator.comparingInt(v -> v.dist)); //定义一个优先级队列， 比较器中比较的是顶点的临时距离
         source.dist = 0;
+        for(Vertex v : graph){   //将顶点全部放入优先级队列
+            queue.offer(v);
+        }
 
-        while(!list.isEmpty()){
-            Vertex curr = chooseMinDistVertex(list);
-            updateNeighboursDist(curr);
-            list.remove(curr);
-            curr.visited = true;
+        while(!queue.isEmpty()){
+            System.out.println(queue);
+            Vertex curr = queue.peek(); //优先级队列的第一个即为dist最小值
+            updateNeighboursDist(curr, queue);
+            queue.poll(); //用poll()方法移除
         }
 
         for(Vertex v : graph){
-            System.out.println(v.name + " " + v.dist + " " + (v.prev != null? v.prev.name : "null")); //如果顶点的prev不为null， 打印prev（起点的prev是null）
+            System.out.println(v.name + " " + v.dist + " " + (v.prev != null? v.prev.name : "null"));
         }
 
     }
 
-    private static void updateNeighboursDist(Vertex curr) {
+    private static void updateNeighboursDist(Vertex curr, PriorityQueue<Vertex> queue) {
         for(Edge edge : curr.edges){
             Vertex n = edge.linked;
-//            if(list.contains(n)){
-            if(!n.visited){  //使用顶点本身的属性进行判断
+            if(!n.visited){
                 int newDist = curr.dist + edge.weight;
                 if(newDist < n.dist) {
+                    queue.remove(n); //移除旧的顶点n;
                     n.dist = newDist;
-                    n.prev = curr; //发现有更小的临时距离，将节点的prev更新为当前节点
+                    n.prev = curr;
+                    queue.offer(n); //将更新后的n点重新加入queue（自动重新排序）
                 }
             }
         }
     }
 
-    private static Vertex chooseMinDistVertex(ArrayList<Vertex> list) {
-
-        Vertex min = list.get(0);
-        for(Vertex v : list){
-            if(v.dist < min.dist){
-                min = v;
-            }
-        }
-        return min;
-    }
 }

@@ -25,4 +25,12 @@ public class Vertex {
         return name;
     }
 
+    @Override
+    public String toString() {
+        String n = name;
+        if (visited) {
+            n = "\u001B[31m" + name + "\u001B[0m";
+        }
+        return n + '(' + (dist == Integer.MAX_VALUE ? "∞" : String.valueOf(dist)) + ") <- " + (prev == null ? "null" : prev.name);
+    }
 }
