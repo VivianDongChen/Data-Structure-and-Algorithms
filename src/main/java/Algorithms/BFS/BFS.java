@@ -1,4 +1,7 @@
-package DataStructure.Graph;
+package Algorithms.BFS;
+
+import DataStructure.Graph.Edge;
+import DataStructure.Graph.Vertex;
 
 import java.util.LinkedList;
 import java.util.List;

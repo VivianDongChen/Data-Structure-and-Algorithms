@@ -1,4 +1,7 @@
-package DataStructure.Graph;
+package Algorithms.TopologicalSort;
+
+import DataStructure.Graph.Edge;
+import DataStructure.Graph.Vertex;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,7 +10,7 @@ import java.util.List;
 /**
  *  使用拓扑排序(Kahn's algorithm)来检测环
  */
-public class TopologicalSort2 {
+public class TopologicalSortKahn2 {
     public static void main(String[] args) {
         Vertex v1 = new Vertex("网页基础");
         Vertex v2 = new Vertex("Java基础");

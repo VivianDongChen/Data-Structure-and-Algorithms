@@ -1,13 +1,16 @@
-package DataStructure.Graph;
+package Algorithms.TopologicalSort;
+
+import DataStructure.Graph.Edge;
+import DataStructure.Graph.Vertex;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 拓扑排序 - DFS 实现   // ？？？原理不太明白
+ * 拓扑排序 - DFS实现   // ？？？原理不太明白
  */
-public class TopologicalSort3 {
+public class TopologicalSortDFS {
 
     public static void main(String[] args) {
         Vertex v1 = new Vertex("网页基础");
