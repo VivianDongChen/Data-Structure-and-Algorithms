@@ -10,7 +10,7 @@ import java.util.List;
  * 迪科斯特拉 - 单源最短路径算法
  * 从一个顶点出发，到其它每一个顶点的最短路径
  */
-public class Dijkstra {
+public class Dijkstra1 {
 
     public static void main(String[] args) {
         Vertex v1 = new Vertex("v1");
