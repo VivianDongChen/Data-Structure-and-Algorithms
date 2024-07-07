@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * 迪科斯特拉 - 单源最短路径算法
  * 从一个顶点出发，到其它每一个顶点的最短路径
+ * 弊端：边的权重不能是负数
  */
 public class Dijkstra1 {
 
