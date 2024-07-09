@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 求最小生成树
  * 最小生成树（Minimum Spanning Tree，MST）问题：给定一个带权无向图，目标是找到一棵生成树，使得这棵生成树包含图中的所有顶点，并且其边权之和最小。
- * 解法1 - Prim算法
+ * 解法1 - Prim算法（以顶点为核心的算法）
  */
 public class Prim {
 
@@ -47,7 +48,7 @@ public class Prim {
             curr.visited = true;
         }
 
-        for (Vertex v : graph) {
+        for (Vertex v : graph) {    //打印图的每一个顶点（打印信息中包含每个顶点的前驱顶点和对应的边的权重）
             System.out.println(v);
         }
 
