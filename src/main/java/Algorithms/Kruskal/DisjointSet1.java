@@ -5,12 +5,12 @@ import java.util.Arrays;
 /**
  * 不相交集合（并查集合）
  */
-public class DisjointSet {
+public class DisjointSet1 {
     int[] s;
-    //数组的索引对应顶点
-    //数组的元素是用来表示与顶点有关系的顶点（顶点默认只与自己有关系， 所以s[i] = i)
+    //数组的索引：顶点
+    //数组的元素：与顶点有关系的顶点（初始默认每个顶点只与自己有关系， 所以s[i] = i)
 
-    public DisjointSet(int size){
+    public DisjointSet1(int size){
         s = new int[size];
         for (int i = 0; i < size; i++) {
             s[i] = i;
@@ -18,7 +18,7 @@ public class DisjointSet {
     }
 
     /**
-     * 找到老大
+     * 找到集合的老大
      * @param x 待寻找老大的集合中的一个元素
      * @return 元素老大
      */
@@ -46,10 +46,11 @@ public class DisjointSet {
     }
 
     public static void main(String[] args) {
-        DisjointSet set = new DisjointSet(7);
+        DisjointSet1 set = new DisjointSet1(7);
         System.out.println(set);
         System.out.println("---------------------");
 
+        //1. 演示Kruskal算法执行流程，下面是按边的权重排序的顺序：
         int x = set.find(0);
         int y = set.find(3);
         System.out.println("老大分别是：" + x + " " + y);
@@ -145,9 +146,6 @@ public class DisjointSet {
             set.union(x,y);
             System.out.println(set);
         }
-
-
-
 
     }
 }
