@@ -1,6 +1,6 @@
 package DataStructure.PriorityQueue;
 
-import DataStructure.Heap.LinkedList.ListNode;
+import DataStructure.LinkedList.ListNode;
 
 public class MinHeap {
     ListNode[] array;
