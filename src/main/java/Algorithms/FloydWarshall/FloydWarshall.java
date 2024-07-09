@@ -12,12 +12,13 @@ import DataStructure.Graph.Vertex;
 
 /**
  * Floyd - Warshall算法 - 多源最短路径算法
+ * 可以检测负环
  */
 public class FloydWarshall {
 
     public static void main(String[] args) throws IOException {
         // 正常情况
-        Vertex v1 = new Vertex("v1");
+        /*Vertex v1 = new Vertex("v1");
         Vertex v2 = new Vertex("v2");
         Vertex v3 = new Vertex("v3");
         Vertex v4 = new Vertex("v4");
@@ -26,6 +27,18 @@ public class FloydWarshall {
         v2.edges = List.of(new Edge(v1, 4), new Edge(v3, 3));
         v3.edges = List.of(new Edge(v4, 2));
         v4.edges = List.of(new Edge(v2, -1));
+        List<Vertex> graph = List.of(v1, v2, v3, v4); */
+
+        // 负环情况
+        Vertex v1 = new Vertex("v1");
+        Vertex v2 = new Vertex("v2");
+        Vertex v3 = new Vertex("v3");
+        Vertex v4 = new Vertex("v4");
+
+        v1.edges = List.of(new Edge(v2, 2));
+        v2.edges = List.of(new Edge(v3, -4));
+        v3.edges = List.of(new Edge(v4, 1), new Edge(v1, 1));
+        v4.edges = List.of();
         List<Vertex> graph = List.of(v1, v2, v3, v4);
 
         floydWarshall(graph);
@@ -106,11 +119,15 @@ public class FloydWarshall {
                         dist[i][j] = dist[i][k] + dist[k][j];
                         prev[i][j] = prev[k][j]; //借助[k][j]过来，它的prev即为[k][j]的prev
                     }
+                    if(i == j && dist[i][j] < 0){
+                        throw new RuntimeException("出现了负环");
+                    }
                 }
 
             }
 
         }
+
         print(dist);
         print(prev);
         for (int i = 0; i < size; i++) {
@@ -137,7 +154,7 @@ public class FloydWarshall {
     }
 
     /**
-     * 打印最短路径来处二维数组
+     * 打印最短路径来处二维数组（前驱矩阵）
      * @param prev 最短路径来处二维数组
      */
     static void print(Vertex[][] prev) {
@@ -167,4 +184,29 @@ public class FloydWarshall {
         }
         System.out.println(stack);
     }
+
+    /*
+       如果存在负环的情况：
+            v1  v2  v3  v4
+        v1  0   2   ∞   ∞
+        v2  ∞   0   -4  ∞
+        v3  1   ∞   0   1
+        v4  ∞   ∞   ∞   0
+
+            k=0
+            v1  v2  v3  v4
+        v1  0   2   ∞   ∞
+        v2  ∞   0   -4  ∞
+        v3  1   3   0   1
+        v4  ∞   ∞   ∞   0
+
+            k=1
+            v1  v2  v3  v4
+        v1  0   2   -2  ∞
+        v2  ∞   0   -4  ∞
+        v3  1   3   -1  1       v3 - v3 = -1  对象线上的值出现了负数
+        v4  ∞   ∞   ∞   0
+
+
+     */
 }
