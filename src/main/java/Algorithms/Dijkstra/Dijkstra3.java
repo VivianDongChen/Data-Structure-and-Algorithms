@@ -1,3 +1,5 @@
+package Algorithms.Dijkstra;
+
 import DataStructure.Graph.Edge;
 import DataStructure.Graph.Vertex;
 

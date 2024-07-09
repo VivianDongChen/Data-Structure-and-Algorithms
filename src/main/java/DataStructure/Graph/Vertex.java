@@ -1,6 +1,7 @@
 package DataStructure.Graph;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 顶点
@@ -32,5 +33,18 @@ public class Vertex {
             n = "\u001B[31m" + name + "\u001B[0m";
         }
         return n + '(' + (dist == Integer.MAX_VALUE ? "∞" : String.valueOf(dist)) + ") <- " + (prev == null ? "null" : prev.name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vertex vertex = (Vertex) o;
+        return Objects.equals(name, vertex.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
