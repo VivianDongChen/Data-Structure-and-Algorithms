@@ -31,12 +31,14 @@ public class DisjointSet1 {
     }
 
     /**
-     * 让两个集合“相交”，即选出新老大，x、y是原老大索引
-     * @param x 一个集合的老大的索引
-     * @param y 另一个集合的老大的索引
+     * 让两个集合“相交”，选出新老大
+     * @param x 一个集合的元素的索引
+     * @param y 另一个集合的元素的索引
      */
     public void union(int x, int y){
-        s[y] = x;    //x,y相交，x是y的老大
+        int rootX = find (x);
+        int rootY = find (y);
+        s[rootY] = rootX;    //rootX是rootY的老大
 
     }
 
