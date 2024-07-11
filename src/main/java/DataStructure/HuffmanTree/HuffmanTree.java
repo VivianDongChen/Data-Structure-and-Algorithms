@@ -52,24 +52,26 @@ public class HuffmanTree {
                     '}';
         }
     }
-    String str;
+    String str;   //待编码的字符串
     Map<Character, Node> map = new HashMap<>();  //用map来盛放字符和对应的Node
+    Node root; //树的根节点
 
     /**
-     * 构造器接收一个字符串，分别拿到这个字符串中的每一个字符和它的Node
-     * @param str
+     * 构造树，完成编码
+     * @param str 接收的待编码的字符串
      */
     public HuffmanTree(String str){
+        //功能1: 接收一个字符串，分别拿到这个字符串每个字符的Node, 并统计频次
         this.str = str;
         char[] chars = str.toCharArray();
-        for(char c : chars){
+        for(char c : chars) {
 //            if(!map.containsKey(c)){
 //                map.put(c,new Node(c));
 //            }
 //            Node node = map.get(c);
 //            node.freq++;
-            Node node = map.computeIfAbsent(c,Node::new);
-            node.freq++;   //功能1:统计频次
+            Node node = map.computeIfAbsent(c, Node::new);
+            node.freq++;
         }
         //功能2: 构造树(将所有node放入优先级队列，以出现频率排序）
         PriorityQueue<Node> queue = new PriorityQueue<>(Comparator.comparingInt(Node::freq));
@@ -80,7 +82,7 @@ public class HuffmanTree {
             int freq = x.freq() + y.freq();
             queue.offer(new Node(freq,x,y));
         }
-        Node root = queue.poll();
+        root = queue.poll();
         //功能3: 计算每个字符的编码， 功能4: 字符串编码后占用bits
         int sum = dfs(root, new StringBuilder());
         for(Node node : map.values()){
@@ -106,8 +108,57 @@ public class HuffmanTree {
 
     }
 
+    //编码
+    public String encode(){
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c: chars){
+           sb.append(map.get(c).code);
+        }
+        return sb.toString();
+    }
+
+    //解码
+    public String decode(String str){  //0001011111111
+        /*
+          从根节点，寻找数字对应的字符
+          数字是0， 向左走
+          数字是1， 向右走
+          如果没走到头，每走一步数字的索引i++
+          走到头就可以找到解码字符，再将node重制为根节点
+
+          a 00
+          b 10
+          c 1
+
+                                                 i
+          0  0  0  1  0  1  1  1  1  1  1  1  1
+         */
+        char[] chars = str.toCharArray();
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+        Node node = root;
+        while(i < chars.length){
+            if(!node.isLeaf()) {
+                if (chars[i] == '0') {
+                    node = node.left;
+                } else if (chars[i] == '1') {
+                    node = node.right;
+                }
+                i++;
+            }
+            if(node.isLeaf()){
+                sb.append(node.ch);
+                node = root;
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
-        new HuffmanTree("abbccccccc");
+        HuffmanTree test = new HuffmanTree("abbccccccc");
+        System.out.println(test.encode());
+        System.out.println(test.decode(test.encode()));
 
     }
 }
