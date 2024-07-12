@@ -76,16 +76,16 @@ public class KnapsackProblem {
                 new Item(3, "白银", 5, 30),
                 new Item(4, "钻石", 1, 10_000),
         };
-        System.out.println(select(items, 10));
+        System.out.println(select2(items, 10));
     }
 
     /**
-     *
+     * 解法1 - 使用二维数组存储dp
      * @param items 物品的数组
      * @param total 背包的容量
      * @return  最大价值
      */
-    static int select(Item[] items, int total) {
+    static int select1(Item[] items, int total) {
         //定义一个二维数组，行数：物品数，列数：背包容量 + 1
         int[][] dp = new int[items.length][total+1];
         //对第1行（索引为0）的数据要进行特殊处理，因为带回要进行“i-1”的计算
@@ -114,6 +114,42 @@ public class KnapsackProblem {
 
     }
 
+    /**
+     * 解法2 - 使用一维数组存储dp
+     * @param items 物品的数组
+     * @param total 背包的容量
+     * @return  最大价值
+     */
+    static int select2(Item[] items, int total) {
+
+        int[] dp = new int[total+1];
+        Item item0 = items[0];  //第1个物品
+        for (int j = 0; j < total + 1; j++) {
+            if(j >= item0.weight){
+                dp[j] = item0.value;
+            }else{
+                dp[j] = 0;
+            }
+        }
+
+        for (int i = 1; i < items.length; i++) {
+            Item item = items[i];
+            for (int j = total; j >= 0; j--){     //逆序遍历以防止计算dp[j-item.weight]找到的是正确的值
+                if(j >= item.weight) {   //装得下
+                    dp[j] = Math.max(dp[j], item.value + dp[j-item.weight]);
+                }
+            }
+        }
+
+        System.out.println(Arrays.toString(dp));
+        return dp[total];
+
+    }
+
+    /**
+     * 打印二维数组
+     * @param dp 二维数组
+     */
     static void print(int[][] dp) {
         System.out.println("   " + "-".repeat(63));
         Object[] array = IntStream.range(0, dp[0].length + 1).boxed().toArray();
