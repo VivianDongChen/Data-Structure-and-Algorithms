@@ -108,7 +108,7 @@ public class KnapsackProblemComplete {
         int[] dp = new int[total + 1];
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
-            for (int j = total; j >= 0; j--) {
+            for (int j = 0; j < total + 1; j++) {  //正序遍历
                 if(j >= item.weight) {
                     dp[j] = Math.max(dp[j], dp[j-item.weight] + item.value);
                 }

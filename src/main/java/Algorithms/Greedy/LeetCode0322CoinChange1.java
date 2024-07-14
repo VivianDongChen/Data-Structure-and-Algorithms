@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 零钱兑换 - 穷举解法（暴力递归）
- * 凑成总金额的凑法中，需要硬币最少个数是几
+ * 凑成总金额的凑法中，需要硬币最少个数是几？
  */
 public class LeetCode0322CoinChange1 {
     static int min = -1; //需要的最少硬币数， -1为没有凑法
