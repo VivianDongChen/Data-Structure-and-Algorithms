@@ -23,7 +23,7 @@ public class LeetCode1143LongestCommonSubsequence {
      */
 
     /**
-     * 解法1: 二维数组
+     * 解法: 二维数组
      * @param text1 字符串1
      * @param text2 字符串2
      * @return 最长公共子序列
