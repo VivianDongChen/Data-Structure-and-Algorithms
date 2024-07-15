@@ -5,7 +5,8 @@ import java.util.Arrays;
 /**
  * 卡特兰数（给定 n 个节点，能组成的不同二叉搜索树（BST）的个数）
  */
-public class LeetCode0096UniqueBinarySearchTrees {
+public class
+LeetCode0096UniqueBinarySearchTrees {
     public static void main(String[] args) {
         System.out.println(catalan(6));
     }
