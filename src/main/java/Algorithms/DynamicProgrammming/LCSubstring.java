@@ -3,7 +3,7 @@ package Algorithms.DynamicProgrammming;
 import java.util.Arrays;
 
 /**
- * 最长公共字串 - 动态规划
+ * 最长公共子串 - 动态规划
  */
 public class LCSubstring {
     /*
@@ -20,9 +20,15 @@ public class LCSubstring {
                 dp[i][j] = 0
             }
          */
-    static int lcs(String a, String b) {
+    /**
+     * 解法1: 二维数组
+     * @param a 字符串1
+     * @param b 字符串2
+     * @return 最长公共字串的个数
+     */
+    static int lcs1(String a, String b) {
         int max = 0;
-        int[][] dp = new int[b.length()][a.length()];   //b: 行， a: 列
+        int[][] dp = new int[b.length()][a.length()];
         for (int i = 0; i < b.length(); i++) {
             for (int j = 0; j < a.length(); j++) {
                 if(a.charAt(j) == b.charAt(i)) {
@@ -41,10 +47,38 @@ public class LCSubstring {
         return max;
     }
 
+    /**
+     * 解法2: 一维数组
+     * @param a 字符串1
+     * @param b 字符串2
+     * @return 最长公共字串的个数
+     */
+    static int lcs2(String a, String b) {
+        int max = 0;
+        int[] dp = new int[a.length()];
+        for (int i = 0; i < b.length(); i++) {
+            for (int j = a.length() - 1; j >= 0; j--) {
+                if(a.charAt(j) == b.charAt(i)) {
+                    if(j == 0){
+                       dp[j] = 1;
+                    }else{
+                        dp[j] = dp[j-1] + 1;
+                    }
+                }else{
+                    dp[j] = 0;
+                }
+                max = Math. max(max, dp[j]);
+            }
+        }
+        System.out.println(Arrays.toString(dp));
+        return max;
+    }
+
+
 
 
     public static void main(String[] args) {
-        System.out.println(lcs("itheima", "thema"));
+        System.out.println(lcs2("itheima", "thema"));
     }
 
     /**
