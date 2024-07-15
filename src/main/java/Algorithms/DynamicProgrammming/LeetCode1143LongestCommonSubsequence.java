@@ -28,7 +28,7 @@ public class LeetCode1143LongestCommonSubsequence {
      * @param text2 字符串2
      * @return 最长公共子序列
      */
-    public int longestCommonSubsequence1(String text1, String text2){
+    public int longestCommonSubsequence(String text1, String text2){
         int m = text1.length();
         int n = text2.length();
         int[][] dp = new int[m+1][n+1]; //将行和列都比数组长度多一个，这样方便处理i-1和j-1；
@@ -47,35 +47,10 @@ public class LeetCode1143LongestCommonSubsequence {
 
     }
 
-    /**
-     * 解法2: 一维数组
-     * @param text1 字符串1
-     * @param text2 字符串2
-     * @return 最长公共子序列
-     */
-    public int longestCommonSubsequence2(String text1, String text2){
-        int m = text1.length();
-        int n = text2.length();
-        int[] dp = new int[n+1];
-        for (int i = 0; i < m; i++) {
-            for (int j = 1; j < n+1; j++) {
-                if(text1.charAt(i) == text2.charAt(j-1)){
-                    dp[j] = dp[j-1] + 1;
-                }else{
-                    dp[j] = Math.max(dp[j], dp[j-1]);
-                }
-            }
-        }
-        System.out.println(Arrays.toString(dp));
-
-        return dp[n];
-
-    }
-
     public static void main(String[] args) {
         LeetCode1143LongestCommonSubsequence test = new LeetCode1143LongestCommonSubsequence();
-        System.out.println(test.longestCommonSubsequence2("abxyz", "abcxyz"));
-        System.out.println(test.longestCommonSubsequence1("ba", "yby"));
+        System.out.println(test.longestCommonSubsequence("abxyz", "abcxyz"));
+        System.out.println(test.longestCommonSubsequence("ba", "yby"));
     }
 
     /**
