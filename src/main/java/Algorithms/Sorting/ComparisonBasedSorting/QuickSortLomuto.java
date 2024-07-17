@@ -40,7 +40,7 @@ public class QuickSortLomuto {
                 if(j != i){
                     swap(a,i,j);
                 }
-                i++;
+                i++; //j找到小的，i跟j一起向前移动，j找到大的，i停止
             }
         }
         swap(a, i,right);
