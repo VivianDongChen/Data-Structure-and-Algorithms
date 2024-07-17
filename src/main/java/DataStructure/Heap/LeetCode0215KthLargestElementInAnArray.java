@@ -1,6 +1,6 @@
 package DataStructure.Heap;
 /*
-  求数组中第K大的元素
+  求数组中第K大的元素 - O（nlog(n))
   解体思路
    1. 向小顶堆放入前K个元素
    2. 剩余元素

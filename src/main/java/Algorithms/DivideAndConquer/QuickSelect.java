@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class QuickSelect {
     /*
-       求排在第i名的元素， i从0开始，由小到大排
+       求排在第i名的元素， i从0开始，由小到大排 (排名i = 由小到大排序后的index）
        6  5  1  2  4
      */
 
@@ -28,7 +28,7 @@ public class QuickSelect {
          */
 
         int p = partition(array, left, right);
-        //将得到的锚点与i进行比较，确定下一步是否需要继续排序
+        //将得到的锚点与i进行比较，确定下一步是否需要继续递归
         if(p == i) {
             return array[p];
         }else if(p > i){    //到左边找
@@ -40,7 +40,7 @@ public class QuickSelect {
     }
 
     /**
-     * 快速排序分区 - 随机
+     * 快速排序分区 - 锚点随机
      * @param a 待排序的数组
      * @param left 本次分区的起点
      * @param right 本次分区的终点
