@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 组合之和
+ * 组合之和 (数组元素可重复） - 与零钱兑换问题其实是一样的， 只不过：
+ * 本题求的是：所有组合的具体信息
+ * 零钱兑换问题求的是：所有组合中数字最少的（最值），所有组合个数（汇总信息）
  */
 public class LeetCode0039CombinationSum {
     static List<List<Integer>> combinationSum(int[] candidates, int target){
