@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 组合之和（
+ * 组合之和
  * - 数组元素不可重复
  * - 且解集不能包含重复的组合- 数组中有可能存在重复的元素
  */

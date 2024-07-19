@@ -31,8 +31,7 @@ public class LeetCode0167TwoSumII {
             int sum = numbers[i] + numbers[j];
             if(sum == target){
                 break;
-            } else if (sum >target){达到。
-
+            } else if (sum >target){
                 j--;
             }else{
                 i++;
