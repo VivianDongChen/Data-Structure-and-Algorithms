@@ -48,7 +48,7 @@ public class LeetCode0037SudokuSolver {
 
     static boolean dfs(int i, int j, char[][] table, boolean[][] ca, boolean[][] cb, boolean[][] cc){
         while(table[i][j] != '.'){  //如果不是‘.'， 查找下一个空格, 直到找到‘.'
-            if(++j >= 9){
+            if(++j >= 9){  //j++ 然后判断是否 >= 9 , 如果是，进入下一行
                 j = 0;
                 i++;
             }
