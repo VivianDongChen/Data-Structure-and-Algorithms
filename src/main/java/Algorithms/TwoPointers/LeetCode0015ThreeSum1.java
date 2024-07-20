@@ -77,7 +77,7 @@ public class LeetCode0015ThreeSum1 {
                 while (i < j && nums[i] == nums[i - 1]) {    //i指针遇到重复的，往前走，直到找到不重复的元素
                     i++;
                 }
-                while (i < j && nums[j] == nums[j - 1]) {    //j指针遇到重复的，往后走，直到找到不重复的元素
+                while (i < j && nums[j] == nums[j + 1]) {    //j指针遇到重复的，往后走，直到找到不重复的元素
                     j--;
                 }
             }
