@@ -19,11 +19,17 @@ public class LeetCode0239SlidingWindowMaximum {
                 queue.poll();
             }
             queue.offer(nums[i]);
+            //在窗口大小满足条件要求（= k),开始从队列头取出数据
             if(i >= k - 1){
                 list.add(queue.peek());
             }
         }
+        //将一个int的list转化为一个int数组的方法：
+        //list.stream() 将 List<Integer> 转换为 Stream<Integer>。
+        //mapToInt(Integer::intValue) 将 Stream<Integer> 中的 Integer 对象映射为 int，生成一个 IntStream。
+        //toArray() 将 IntStream 中的元素收集到一个 int 数组中。
         return list.stream(). mapToInt(Integer :: intValue).toArray();
+
     }
 
     public static void main(String[] args) {
