@@ -1,4 +1,4 @@
-package Algorithms.TwoPointers;
+package Algorithms.KnuthMorrisPratt;
 
 /**
  * 字符串匹配 - 两个指针（暴力匹配）
