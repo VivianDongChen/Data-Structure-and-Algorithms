@@ -30,45 +30,6 @@ public class LeetCode0146LRUCache {
     /**
      * 双向链表类
      */
-    static class DoublyLinbkedlist{
-        Node head;  //头指针
-        Node tail;  //尾指针
-        public DoublyLinbkedlist(){
-            head = tail = new Node(); //哨兵节点
-            head.next = tail;
-            tail.prev = head;
-        }
-
-        //头部添加  head <-> 1 <-> 2 <-> tail  0(1)
-        public void addFirst(Node newFirst){
-            Node oldFirst = head.next;
-            newFirst.prev = head;
-            newFirst.next = oldFirst;
-            head.next = newFirst;
-            oldFirst.prev = newFirst;
-
-        }
-
-        //已知节点删除     0(1)
-        public void remove(Node node){
-            Node prev = node.prev;
-            Node next = node.next;
-            prev.next = next;
-            next.prev = prev;
-
-        }
-
-        //尾部删除    0(1)
-        public Node removeLast(){
-            Node last = tail.prev;
-            remove(last);
-            return last;
-        }
-    }
-
-    /**
-     * 双向链表类
-     */
     static class DoublyLinkedList{
         Node head;  //头指针
         Node tail;  //尾指针
@@ -106,7 +67,7 @@ public class LeetCode0146LRUCache {
     }
 
     private final HashMap<Integer, Node> map = new HashMap<>();
-    private final DoublyLinbkedlist list = new DoublyLinbkedlist();
+    private final DoublyLinkedList list = new DoublyLinkedList();
     private int capacity;
 
     public LeetCode0146LRUCache(int capacity) {
@@ -129,6 +90,8 @@ public class LeetCode0146LRUCache {
         if(map.containsKey(key)){  //更新 O(1)
             Node node = map.get(key);
             node.value = value;
+            list.remove(node);
+            list.addFirst(node);
         }else{     //新增
             Node node = new Node(key, value);
             list.addFirst(node);    // O(1)
