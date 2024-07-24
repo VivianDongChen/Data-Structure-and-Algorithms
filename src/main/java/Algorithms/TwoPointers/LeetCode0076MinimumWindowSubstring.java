@@ -66,7 +66,13 @@ public class LeetCode0076MinimumWindowSubstring {
 //            System.out.println("------------------------------");
             //若已满足所有条件，缩小i范围，更新范围内字符计数和通过条件数
             while(passed == passTotal && i<=j){   //找到了一个解
-                res = new Result(i, j);
+                if (res == null) {
+                    res = new Result(i, j);
+                } else {
+                    if (j - i < res.j - res.i) {
+                        res = new Result(i, j);
+                    }
+                }
                 char left = source[i];
                 sourceCount[left]--;
                 if(sourceCount[left] < targetCount[left]){
