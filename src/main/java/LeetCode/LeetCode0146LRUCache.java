@@ -5,8 +5,13 @@ import java.util.HashMap;
 /**
  * LRU缓存
  * 使用数据结构：
- *   - 双向链表带哨兵（自己实现）
  *   - HashMap（Java自带）
+ *       key
+ *       value 是节点（key, value)
+ *       可以根据key很快找到节点
+ *   - 双向链表带哨兵（自己实现）
+ *       里面存储节点（ley，value）
+ *       最新使用（加入或者更新）放在链表头，最后使用（介入或者更新）放在链表尾，并可以直接删除
  */
 public class LeetCode0146LRUCache {
     /**
