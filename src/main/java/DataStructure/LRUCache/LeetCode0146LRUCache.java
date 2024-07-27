@@ -1,4 +1,4 @@
-package LeetCode;
+package DataStructure.LRUCache;
 
 import java.util.HashMap;
 

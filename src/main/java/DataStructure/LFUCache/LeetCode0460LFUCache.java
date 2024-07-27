@@ -1,6 +1,4 @@
-package LeetCode;
-
-import jdk.jfr.Frequency;
+package DataStructure.LFUCache;
 
 import java.util.HashMap;
 
