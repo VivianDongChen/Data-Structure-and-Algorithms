@@ -1,3 +1,5 @@
+package LeetCode;
+
 import org.w3c.dom.ls.LSOutput;
 
 import javax.print.DocFlavor;
