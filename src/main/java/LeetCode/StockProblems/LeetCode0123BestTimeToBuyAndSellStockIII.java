@@ -44,8 +44,6 @@ public class LeetCode0123BestTimeToBuyAndSellStockIII {
 
     /**
      * 数组
-     * @param prices
-     * @return
      */
     static int maxProfit1(int[] prices){
         int[] buy1 = new int[prices.length];
@@ -68,8 +66,6 @@ public class LeetCode0123BestTimeToBuyAndSellStockIII {
 
     /**
      * 优化后的代码
-     * @param prices
-     * @return
      */
     static int maxProfit2(int[] prices){
         int buy1 = Integer.MIN_VALUE;
