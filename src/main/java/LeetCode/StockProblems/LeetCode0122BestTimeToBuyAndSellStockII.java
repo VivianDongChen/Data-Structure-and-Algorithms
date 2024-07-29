@@ -2,8 +2,7 @@ package LeetCode.StockProblems;
 
 /**
  * 买卖股票的最佳时机
- * 某一天买入股票，未来任意一天卖出，只能卖了再买， 但可以买卖多次，并允许
- * 同一天卖出后买入，求最大利润
+ * 某一天买入股票，未来任意一天卖出，只能卖了再买， 但可以买卖多次，并允许同一天卖出后买入，求最大利润
  * 贪心算法：有利润就卖
  */
 public class LeetCode0122BestTimeToBuyAndSellStockII {

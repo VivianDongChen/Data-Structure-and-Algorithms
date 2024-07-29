@@ -6,15 +6,16 @@ package LeetCode.StockProblems;
 
 public class LeetCode0714BestTimeToBuyAndSellStockWithTransactionFee {
     /*
-     * 动态规划
-     * - 使用两个状态数组
+     * 动态规划 - 使用两个状态数组
      *                                 9     3    12    1    2    3
      *
      * 买或不买的最优利润                -9    -3    -3    7    7    7
+     *                               （买） （买） （等）（买）（等）（等）
      * 买                             -9    -3    -12   7    6    5
      * 不买                            -    -9    -3    -3   7    7
      *
      * 卖或不卖的最优利润（扣除手续费1）    0     0     8     8    8    9
+     *                               （等） （等） （卖）（等）（等）（卖）
      * 卖                              -    -7     8    -3    8    9
      * 不卖                            0     0     0     8    8    8
      *

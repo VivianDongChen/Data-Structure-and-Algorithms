@@ -7,15 +7,16 @@ package LeetCode.StockProblems;
 public class LeetCode0309BestTimeToBuyAndSellStockWithCooldown {
 
     /*
-     * 动态规划
-     * - 使用两个状态数组
+     * 动态规划 - 使用两个状态数组
      *                                 1     2    3    0    2
      *
      * 买或不买的最优利润                -1    -1   -1     1    1
+     *                               （买） （等） （等）（买）（等）
      * 买                             -1    -2    -3    1    0
      * 不买                            -     -1   -1    -1    1
      *
      * 卖或不卖的最优利润                0      1    2     2    3
+     *                              （等）  （卖） （等）（等）（卖）
      * 卖                             -      1     2    -1    3
      * 不卖                            0     0     1     2    2
      */
@@ -51,7 +52,7 @@ public class LeetCode0309BestTimeToBuyAndSellStockWithCooldown {
         int buy2 = -prices[0];
         int sell2 = 0;
         int buy1 = Math. max(buy2, -prices[1]);
-        int sell1 = Math. max(sell2, buy1 + prices[1]);
+        int sell1 = Math. max(sell2, buy2 + prices[1]);
 
         for (int i = 2; i < prices.length; i++) {
             int buy = Math.max(buy1, sell2 - prices[i]);
