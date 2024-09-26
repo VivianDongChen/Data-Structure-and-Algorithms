@@ -9,7 +9,7 @@ public class LeetCode0003LongestSubstringWithoutRepeatingCharacters {
     /*
        思路：
 
-       给定一个字符串 s, 请你超出其中不含重复字符的最长字串的长度
+       给定一个字符串 s, 请你找出其中不含重复字符的最长子串的长度
        abcabcbb  3
        a
        ab
