@@ -1,7 +1,7 @@
 package HackerRank;
 import java.util.Arrays;
 
-public class MaximizeEngagement {
+public class TikTok_MaximizeEngagement {
     public static long getMaxEngagementScore(int[] views, int[] likes) {
         Arrays.sort(views);
         Arrays.sort(likes);

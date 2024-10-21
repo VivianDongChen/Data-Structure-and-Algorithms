@@ -2,7 +2,7 @@ package HackerRank;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InfluencersSquad {
+public class TikTok_InfluencersSquad {
     public static int findMaxSquadSize(int[] engagementScores) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int score : engagementScores) {
