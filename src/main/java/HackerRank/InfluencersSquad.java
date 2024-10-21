@@ -32,3 +32,4 @@ public class InfluencersSquad {
         System.out.println(findMaxSquadSize(engagementScores));  // 输出：3
     }
 }
+
