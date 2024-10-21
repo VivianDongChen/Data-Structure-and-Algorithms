@@ -1,6 +1,14 @@
 package HackerRank;
 
-//DP
+/**
+ * 算法：DP
+ * 时间复杂度
+ * 构造字符计数表：O(n * m)（n 是字符串的数量，m 是字符串的长度）
+ * 动态规划计算：O(t * m)（t 是目标字符串的长度，m 是列的数量）
+ * 总的时间复杂度为：O(n∗m+t∗m)𝑂
+ * 在最坏情况下，这已经是非常高效的，因为我们必须至少遍历一次所有输入字符。
+ * 空间复杂度：O(t * m)（用于存储 DP 表）
+ */
 
 public class Snowflake_StringFormation {
     public int numWays(String[] words, String target) {
@@ -9,13 +17,13 @@ public class Snowflake_StringFormation {
         int m = words[0].length(); // 每个字符串的长度
         int tLen = target.length(); // 目标字符串的长度
 
-        // 统计每列中各字符的出现次数
-        int[][] charCount = new int[m][26];  // m 列，每列存储 26 个字母的出现次数
+        // 统计字符串的每个索引位置字母的出现次数
+        int[][] charCount = new int[m][26];
 
-        // 遍历每个字符串，统计各列中字符的出现次数
+        // 遍历每个字符串，统计每个索引位置字母的出现次数
         for (String word : words) {
             for (int j = 0; j < m; j++) {
-                charCount[j][word.charAt(j) - 'a']++;
+                charCount[j][word.charAt(j) - 'a']++;    //每个字符串第j个索引的26个字母的出现次数
             }
         }
 
