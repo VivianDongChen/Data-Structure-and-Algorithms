@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 设计推特
  */
-public class LeetCode0355DesignTwitter {
+public class LeetCode0355_DesignTwitter {
 
     static class Twitter {
 

@@ -1,12 +1,9 @@
 package LeetCode;
 
-import org.w3c.dom.ls.LSOutput;
-
-import javax.print.DocFlavor;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class LeetCode0535EncodeAndDecodeTinyURL {
+public class LeetCode0535_EncodeAndDecodeTinyURL {
     public static void main(String[] args) {
         CodecSequence codec = new CodecSequence();
         String encoded = codec.encode("https://leetcode.cn/problems/1");
