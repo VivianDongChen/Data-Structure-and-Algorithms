@@ -5,7 +5,49 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * So, for this 'Substring with Concatenation of All Words' problem, here’s how I approached it.
+ *
+ * ## Thought Process
+ *
+ * The challenge was to find all starting positions in the string `s` where a substring is exactly a concatenation of all the words from the `words` list — each word must appear exactly once, and the words should be placed next to each other without any gaps. I knew that brute force would be too slow for larger inputs, so I thought about using the **Sliding Window technique** combined with **HashMaps** to keep things efficient.
+ *
+ * ## What I Did
+ *
+ * 1. **Checked the Easy Cases First**:
+ *    - The total length of all the words together is `num * m` (where `num` is the number of words and `m` is the length of each word). If the string `s` is shorter than this, I just returned an empty list since there’s no way a valid substring can fit.
+ *
+ * 2. **Used a HashMap to Track Word Frequencies**:
+ *    - I built a HashMap to store how often each word in the `words` array should appear. This made it easy to check if the words in my current window matched the expected counts.
+ *
+ * 3. **Handled Multiple Starting Positions with Sliding Window**:
+ *    - Because all the words have the same length, I had to slide the window starting from **every offset** between `0` and `m-1` (to account for all possible starting points). For each offset, I used two pointers:
+ *      - **Left pointer (`l`)**: Marks the start of the current window.
+ *      - **Right pointer (`r`)**: Moves through the string in steps of `m` to grab words one by one.
+ *
+ * 4. **Tracked Words in the Current Window**:
+ *    - If a word from the string matched one in the HashMap, I added it to another HashMap to keep track of the counts in the current window.
+ *    - If any word showed up too many times, I shrank the window by moving the left pointer `l` to the right, making sure the counts stayed correct.
+ *    - If all the words matched perfectly, I recorded the starting index as a valid result.
+ *
+ * 5. **Reset the Window if Needed**:
+ *    - If I found a word that wasn’t in the `words` list, I cleared the current window and started fresh from the next position.
+ *
+ * ## Time Complexity
+ *
+ * - The solution runs in **O(n)** time, where `n` is the length of the input string. The reason is that I slide through the string just a few times, and checking each word or updating counts is done in constant time.
+ * - Building the frequency map takes **O(num)** time, but since the length of the string is usually much larger than the number of words, the overall time complexity simplifies to **O(n)**.
+ *
+ * ## Space Complexity
+ *
+ * - I use two HashMaps: one to store the word frequencies and another to track the current window’s word counts. So, the space complexity is **O(num)**, where `num` is the number of words.
+ *
+ * ## Why This Solution Works Well
+ *
+ * Using a sliding window with multiple offsets ensures I don’t miss any possible starting positions. The HashMaps allow me to efficiently track word frequencies and compare them on the fly. This way, the solution stays both **fast** and **clean**, even with larger inputs.
+ *
+ * Overall, this approach avoids unnecessary checks, ensures the string is only traversed a few times, and strikes a good balance between readability and performance.
+ */
 public class LeetCode0030_SubstringWithConcatenationOfAllWords {
     /**
      * Algorithms and DataStructure: Sliding Window & HashMap
