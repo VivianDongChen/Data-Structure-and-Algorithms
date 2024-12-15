@@ -1,7 +1,7 @@
 package DataStructure.BinaryTree;
 
 /**
- * 二叉树遍历 - 递归实现
+ * 二叉树遍历 - DFS - 递归实现
  */
 public class TreeTraversal1 {
 
@@ -10,20 +10,19 @@ public class TreeTraversal1 {
           1
         /   \
        2     3
-      /     / \
-     4     5   6
+      / \    / \
+     4   5  6   7
 
     */
 
         TreeNode root = new TreeNode
                 (new TreeNode(new TreeNode(4),
-                        2,
-                        null),
+                        2,new TreeNode(5)),
                         1,
 
-                        new TreeNode(new TreeNode(5),
+                        new TreeNode(new TreeNode(6),
                                 3,
-                                new TreeNode(6))
+                                new TreeNode(7))
                 );
 
         preOrder(root);
@@ -37,23 +36,22 @@ public class TreeTraversal1 {
 
 
     /**
-     * 前序遍历 - 递归
+     * 前序遍历（root - left - right) - 递归
      * @param node 节点
      */
 
     static void preOrder(TreeNode node) {
-        if (node == null) {
+        if (node == null) {      //base case
             return;
         }
-
         System.out.print(node.val + "\t"); //值
-        preOrder(node.left);
-        preOrder(node.right);
+        preOrder(node.left);   //左
+        preOrder(node.right);    //右
 
     }
 
     /**
-     * 中序遍历 - 递归
+     * 中序遍历(left-root-right) - 递归
      * @param node 节点
      */
     static void inOrder(TreeNode node) {
@@ -61,14 +59,14 @@ public class TreeTraversal1 {
             return;
         }
 
-        inOrder(node.left);
+        inOrder(node.left);  //左
         System.out.print(node.val + "\t"); //值
-        inOrder(node.right);
+        inOrder(node.right);   //右
 
     }
 
     /**
-     * 后序遍历 - 递归
+     * 后序遍历（left-right-root) - 递归
      * @param node 节点
      */
     static void postOrder(TreeNode node) {

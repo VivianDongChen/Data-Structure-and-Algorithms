@@ -15,13 +15,9 @@ public class Vertex {
     public int dist = INF; //距离，用于迪科斯特拉算法，初始值设为无穷大
     static final Integer INF = Integer.MAX_VALUE;
     public Vertex prev = null; //前一个顶点，用于迪科斯特拉算法中记录前一个顶点
-
-
-
     public Vertex(String name){
         this.name = name;
     }
-
     public String getName() {
         return name;
     }

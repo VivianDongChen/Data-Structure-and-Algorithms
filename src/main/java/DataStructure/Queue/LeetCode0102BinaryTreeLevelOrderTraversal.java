@@ -1,6 +1,7 @@
 package DataStructure.Queue;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 //二叉树层序遍历 - 利用queue的头出尾进来遍历
@@ -62,7 +63,7 @@ public class LeetCode0102BinaryTreeLevelOrderTraversal {
         if(root == null){
             return result;
         }
-        LinkedListQueue<TreeNode> queue = new LinkedListQueue<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();  //JDK自带queue
         queue.offer(root);
         int c1 = 1; //当前层的节点数
         while(!queue.isEmpty()){
@@ -82,7 +83,6 @@ public class LeetCode0102BinaryTreeLevelOrderTraversal {
             }
             result.add(level);
             c1 = c2;
-            System.out.println();
         }
         return result;
     }
