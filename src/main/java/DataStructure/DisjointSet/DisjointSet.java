@@ -1,6 +1,5 @@
 package DataStructure.DisjointSet;
 
-import java.net.SocketOption;
 import java.util.Arrays;
 
 /**
