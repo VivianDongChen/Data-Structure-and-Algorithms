@@ -11,7 +11,7 @@ import java.util.*;
     -递归调用栈的深度最坏为O(V)
     总空间复杂度：O(V+E)
  */
-public class LeetCode399 {
+public class LeetCode0399I {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         HashMap<String, HashMap<String, Double>> graph = graphBuild(equations, values);  //除数，被除数和值放入一个图结构
         double[] finalAns = new double[queries.size()];
@@ -95,7 +95,7 @@ public class LeetCode399 {
                 Arrays.asList("cd", "bc")
         );
 
-        LeetCode399 test = new LeetCode399();
+        LeetCode0399I test = new LeetCode0399I();
         System.out.println(Arrays.toString(test.calcEquation(equations1, values1, queries1))); // expected: [6.0, 0.5, -1.0, 1.0, -1.0]
         System.out.println(Arrays.toString(test.calcEquation(equations2, values2, queries2))); //expected：[3.75, 0.4, 5.0, 0.2]
 
