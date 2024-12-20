@@ -19,19 +19,20 @@ public class MaxHeap {
         heapify();
     }
 
-    //建堆
+    //建堆（弗洛伊德建堆算法- 时间复杂度O(n)）：找到最后一个非叶子节点，然后将所有非叶子节点逐一下潜
     private void heapify(){
-        //如何找到最后一个非叶子节点？ 公式：size/2 - 1
+        //如何找到最后一个非叶子节点？ 公式：最后一个非叶子节点的索引 = size/2 - 1
         for (int i = size/2 - 1 ; i >= 0; i--) {
             down(i);
         }
-
-
     }
 
     /**
      * 将parent索引处的元素下潜，与两个孩子较大者交换，直至没有孩子或孩子没它大
      * @param parent 索引
+     * left: 左孩子索引
+     * right：右孩子索引
+     * max：指针，指向大值的索引
      */
     public void down(int parent){
         int left = parent * 2 + 1;
@@ -80,11 +81,11 @@ public class MaxHeap {
         if(size == 0){
             throw new IllegalArgumentException("堆为空");
         }
-        int top = array[0];
-        swap(0,size-1);
-        size --;
-        down(0);
-        return top;
+        int top = array[0];  //获取堆顶元素
+        swap(0,size-1); //将堆顶元素节点跟最后一个叶子节点交换
+        size --;  //删除以后一个叶子节点
+        down(0);   //将堆顶元素进行下潜
+        return top;  //返回堆顶元素
     }
 
     /**
@@ -132,18 +133,18 @@ public class MaxHeap {
      * @param offered 元素
      */
      private void up(int offered){
-         int child = size;
+         int child = size; //指针， 一开始指向最后一个元素（原来的最后一个元素+1， 即为size）
 
-         while(child > 0){
-             int parent = (child -1)/2;
-             if(offered > array[parent]){
-                 array[child] = array[parent];
-             }else{
+         while(child > 0){ //当指针没有达到堆顶
+             int parent = (child -1)/2;  //父元素的索引
+             if(offered > array[parent]){   // 当新增元素的值大于父元素的值
+                 array[child] = array[parent];  //将父元素的值赋值给子元素的索引
+             }else{  //否则退出循环
               break;
              }
-             child = parent;
+             child = parent; //指针指向父元素索引（上浮）
          }
-         array[child] = offered;
+         array[child] = offered; //这个时候指针指向的索引就是应该存储offered的索引
 
      }
 
