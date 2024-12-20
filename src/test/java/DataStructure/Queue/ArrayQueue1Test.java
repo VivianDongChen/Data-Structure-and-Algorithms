@@ -10,7 +10,7 @@ class ArrayQueue1Test {
 
     @Test
     public void testOffer(){
-        ArrayQueue1 queue = new ArrayQueue1<>(5);
+        ArrayQueue_I queue = new ArrayQueue_I<>(5);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
@@ -23,7 +23,7 @@ class ArrayQueue1Test {
 
     @Test
     public void testPeek(){
-        ArrayQueue1 queue = new ArrayQueue1<>(5);
+        ArrayQueue_I queue = new ArrayQueue_I<>(5);
         assertNull(queue.peek());
         queue.offer(1);
         assertEquals(1,queue.peek());
@@ -33,7 +33,7 @@ class ArrayQueue1Test {
 
     @Test
     public void testPoll(){
-        ArrayQueue1 queue = new ArrayQueue1<>(5);
+        ArrayQueue_I queue = new ArrayQueue_I<>(5);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
@@ -51,7 +51,7 @@ class ArrayQueue1Test {
 
     @Test
     public void testOffLimit(){
-        ArrayQueue1 queue = new ArrayQueue1<>(3);
+        ArrayQueue_I queue = new ArrayQueue_I<>(3);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);

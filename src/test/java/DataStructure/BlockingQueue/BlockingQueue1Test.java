@@ -1,11 +1,9 @@
 package DataStructure.BlockingQueue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class BlockingQueue1Test {
 
     public static void main(String[] args) throws InterruptedException{
-        BlockingQueue1<String> queue = new BlockingQueue1<>(3);
+        BlockingQueue_I<String> queue = new BlockingQueue_I<>(3);
 
         Thread t1 = new Thread(()->{
             try{

@@ -12,7 +12,7 @@ class LeetCode0101SymmetricTreeTest {
                 1,
                 new TreeNode(new TreeNode(4),2,new TreeNode(3))
         );
-        assertTrue(new LeetCode0101SymmetricTree().isSymmetric(root));
+        assertTrue(new LeetCode_0101().isSymmetric(root));
 
     }
 
@@ -23,7 +23,7 @@ class LeetCode0101SymmetricTreeTest {
                 1,
                 new TreeNode(null,2,new TreeNode(3))
         );
-        assertFalse(new LeetCode0101SymmetricTree().isSymmetric(root));
+        assertFalse(new LeetCode_0101().isSymmetric(root));
 
     }
 

@@ -9,7 +9,7 @@ class PriorityQueue1Test {
 
     @Test
     public void test(){
-        PriorityQueue1<Entry> queue = new PriorityQueue1<>(5);
+        PriorityQueue_I<Entry> queue = new PriorityQueue_I<>(5);
         queue.offer(new Entry("task1",4));
         queue.offer(new Entry("task2",3));
         queue.offer(new Entry("task3",2));

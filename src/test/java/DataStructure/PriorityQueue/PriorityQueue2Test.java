@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PriorityQueue2Test {
     @Test
     public void test(){
-        PriorityQueue2<Entry> queue = new PriorityQueue2<>(5);
+        PriorityQueue_II<Entry> queue = new PriorityQueue_II<>(5);
         queue.offer(new Entry("task1",4));
         queue.offer(new Entry("task2",3));
         queue.offer(new Entry("task3",2));

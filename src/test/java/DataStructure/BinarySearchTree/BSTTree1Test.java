@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BSTTree1Test {
 
-    public BSTTree1 creatTree(){
+    public BSTTree_I creatTree(){
         /*
                  4
                /   \
@@ -19,22 +19,22 @@ class BSTTree1Test {
 
          */
 
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1,"张无忌");
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3,"宋青书");
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2,"周芷若",n1,n3);
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5,"说不得");
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7,"殷离");
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6,"赵敏",n5,n7);
-        BSTTree1.BSTNode root = new BSTTree1.BSTNode(4,"小昭",n2,n6);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1,"张无忌");
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3,"宋青书");
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2,"周芷若",n1,n3);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5,"说不得");
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7,"殷离");
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6,"赵敏",n5,n7);
+        BSTTree_I.BSTNode root = new BSTTree_I.BSTNode(4,"小昭",n2,n6);
 
-        BSTTree1 tree = new BSTTree1();
+        BSTTree_I tree = new BSTTree_I();
         tree.root = root;
         return tree;
     }
 
     @Test
     void testGet(){
-        BSTTree1 tree = creatTree();
+        BSTTree_I tree = creatTree();
         assertEquals("张无忌",tree.get(1));
         assertEquals("周芷若",tree.get(2));
         assertEquals("宋青书",tree.get(3));
@@ -48,15 +48,15 @@ class BSTTree1Test {
 
     @Test
     void testMinMAx(){
-        BSTTree1 tree = creatTree();
+        BSTTree_I tree = creatTree();
         assertEquals("张无忌",tree.min());
         assertEquals("殷离",tree.max());
     }
 
     @Test
     void testPut(){
-        BSTTree1 tree1 = creatTree();
-        BSTTree1 tree2 = new BSTTree1();
+        BSTTree_I tree1 = creatTree();
+        BSTTree_I tree2 = new BSTTree_I();
         tree2.put(4, "小昭");
         tree2.put(2, "周芷若");
         tree2.put(6, "赵敏");
@@ -70,7 +70,7 @@ class BSTTree1Test {
 
     }
 
-    static boolean isSameTree(BSTTree1.BSTNode tree1, BSTTree1.BSTNode tree2) {
+    static boolean isSameTree(BSTTree_I.BSTNode tree1, BSTTree_I.BSTNode tree2) {
         if (tree1 == null && tree2 == null) {
             return true;
         }
@@ -94,17 +94,17 @@ class BSTTree1Test {
                      /
                     5
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5);
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6, n5, null);
-        BSTTree1.BSTNode n8 = new BSTTree1.BSTNode(8, 8);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7, n6, n8);
-        BSTTree1.BSTNode root = new BSTTree1.BSTNode(4, 4, n2, n7);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6, n5, null);
+        BSTTree_I.BSTNode n8 = new BSTTree_I.BSTNode(8, 8);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7, n6, n8);
+        BSTTree_I.BSTNode root = new BSTTree_I.BSTNode(4, 4, n2, n7);
 
-        BSTTree1 tree = new BSTTree1();
+        BSTTree_I tree = new BSTTree_I();
         tree.root = root;
 
         assertNull(tree.predecessor(1));
@@ -128,17 +128,17 @@ class BSTTree1Test {
                      \
                       4
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n4 = new BSTTree1.BSTNode(4, 4);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3, null, n4);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n4 = new BSTTree_I.BSTNode(4, 4);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3, null, n4);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode n8 = new BSTTree1.BSTNode(8, 8);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7, n6, n8);
-        BSTTree1.BSTNode root = new BSTTree1.BSTNode(5, 5, n2, n7);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode n8 = new BSTTree_I.BSTNode(8, 8);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7, n6, n8);
+        BSTTree_I.BSTNode root = new BSTTree_I.BSTNode(5, 5, n2, n7);
 
-        BSTTree1 tree = new BSTTree1();
+        BSTTree_I tree = new BSTTree_I();
         tree.root = root;
 
         assertEquals(2, tree.successor(1));
@@ -163,17 +163,17 @@ class BSTTree1Test {
                      /
                     5
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5);
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6, n5, null);
-        BSTTree1.BSTNode n8 = new BSTTree1.BSTNode(8, 8);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7, n6, n8);
-        BSTTree1.BSTNode root1 = new BSTTree1.BSTNode(4, 4, n2, n7);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6, n5, null);
+        BSTTree_I.BSTNode n8 = new BSTTree_I.BSTNode(8, 8);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7, n6, n8);
+        BSTTree_I.BSTNode root1 = new BSTTree_I.BSTNode(4, 4, n2, n7);
 
-        BSTTree1 tree1 = new BSTTree1();
+        BSTTree_I tree1 = new BSTTree_I();
         tree1.root = root1;
 
         assertEquals(1, tree1.delete2(1));
@@ -189,11 +189,11 @@ class BSTTree1Test {
                        /
                       6
          */
-        BSTTree1.BSTNode x2 = new BSTTree1.BSTNode(2, 2);
-        BSTTree1.BSTNode x6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode x7 = new BSTTree1.BSTNode(7, 7, x6, null);
-        BSTTree1.BSTNode root2 = new BSTTree1.BSTNode(4, 4, x2, x7);
-        BSTTree1 tree2 = new BSTTree1();
+        BSTTree_I.BSTNode x2 = new BSTTree_I.BSTNode(2, 2);
+        BSTTree_I.BSTNode x6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode x7 = new BSTTree_I.BSTNode(7, 7, x6, null);
+        BSTTree_I.BSTNode root2 = new BSTTree_I.BSTNode(4, 4, x2, x7);
+        BSTTree_I tree2 = new BSTTree_I();
         tree2.root = root2;
 
         assertTrue(isSameTree(tree1.root, tree2.root));
@@ -211,16 +211,16 @@ class BSTTree1Test {
                      /
                     5
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5);
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6, n5, null);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7, n6, null);
-        BSTTree1.BSTNode root1 = new BSTTree1.BSTNode(4, 4, n2, n7);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6, n5, null);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7, n6, null);
+        BSTTree_I.BSTNode root1 = new BSTTree_I.BSTNode(4, 4, n2, n7);
 
-        BSTTree1 tree1 = new BSTTree1();
+        BSTTree_I tree1 = new BSTTree_I();
         tree1.root = root1;
 
         assertEquals(7, tree1.delete2(7));
@@ -233,13 +233,13 @@ class BSTTree1Test {
                  / \   /
                 1   3 5
          */
-        BSTTree1.BSTNode x1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode x3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode x2 = new BSTTree1.BSTNode(2, 2, x1, x3);
-        BSTTree1.BSTNode x5 = new BSTTree1.BSTNode(5, 5);
-        BSTTree1.BSTNode x6 = new BSTTree1.BSTNode(6, 6, x5, null);
-        BSTTree1.BSTNode root2 = new BSTTree1.BSTNode(4, 4, x2, x6);
-        BSTTree1 tree2 = new BSTTree1();
+        BSTTree_I.BSTNode x1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode x3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode x2 = new BSTTree_I.BSTNode(2, 2, x1, x3);
+        BSTTree_I.BSTNode x5 = new BSTTree_I.BSTNode(5, 5);
+        BSTTree_I.BSTNode x6 = new BSTTree_I.BSTNode(6, 6, x5, null);
+        BSTTree_I.BSTNode root2 = new BSTTree_I.BSTNode(4, 4, x2, x6);
+        BSTTree_I tree2 = new BSTTree_I();
         tree2.root = root2;
 
         assertTrue(isSameTree(tree1.root, tree2.root));
@@ -257,17 +257,17 @@ class BSTTree1Test {
                        \
                         6
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5, null, n6);
-        BSTTree1.BSTNode n8 = new BSTTree1.BSTNode(8, 8);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7, n5, n8);
-        BSTTree1.BSTNode root1 = new BSTTree1.BSTNode(4, 4, n2, n7);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5, null, n6);
+        BSTTree_I.BSTNode n8 = new BSTTree_I.BSTNode(8, 8);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7, n5, n8);
+        BSTTree_I.BSTNode root1 = new BSTTree_I.BSTNode(4, 4, n2, n7);
 
-        BSTTree1 tree1 = new BSTTree1();
+        BSTTree_I tree1 = new BSTTree_I();
         tree1.root = root1;
 
         assertEquals(4, tree1.delete2(4));
@@ -281,15 +281,15 @@ class BSTTree1Test {
                 1   3 6     8
 
          */
-        BSTTree1.BSTNode x1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode x3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode x2 = new BSTTree1.BSTNode(2, 2, x1, x3);
+        BSTTree_I.BSTNode x1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode x3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode x2 = new BSTTree_I.BSTNode(2, 2, x1, x3);
 
-        BSTTree1.BSTNode x6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode x8 = new BSTTree1.BSTNode(8, 8);
-        BSTTree1.BSTNode x7 = new BSTTree1.BSTNode(7, 7, x6, x8);
-        BSTTree1.BSTNode root2 = new BSTTree1.BSTNode(5, 5, x2, x7);
-        BSTTree1 tree2 = new BSTTree1();
+        BSTTree_I.BSTNode x6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode x8 = new BSTTree_I.BSTNode(8, 8);
+        BSTTree_I.BSTNode x7 = new BSTTree_I.BSTNode(7, 7, x6, x8);
+        BSTTree_I.BSTNode root2 = new BSTTree_I.BSTNode(5, 5, x2, x7);
+        BSTTree_I tree2 = new BSTTree_I();
         tree2.root = root2;
 
         assertTrue(isSameTree(tree1.root, tree2.root));
@@ -306,15 +306,15 @@ class BSTTree1Test {
                 1   3     6
 
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5, null, n6);
-        BSTTree1.BSTNode root1 = new BSTTree1.BSTNode(4, 4, n2, n5);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5, null, n6);
+        BSTTree_I.BSTNode root1 = new BSTTree_I.BSTNode(4, 4, n2, n5);
 
-        BSTTree1 tree1 = new BSTTree1();
+        BSTTree_I tree1 = new BSTTree_I();
         tree1.root = root1;
 
         assertEquals(4, tree1.delete2(4));
@@ -328,13 +328,13 @@ class BSTTree1Test {
                 1   3
 
          */
-        BSTTree1.BSTNode x1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode x3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode x2 = new BSTTree1.BSTNode(2, 2, x1, x3);
+        BSTTree_I.BSTNode x1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode x3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode x2 = new BSTTree_I.BSTNode(2, 2, x1, x3);
 
-        BSTTree1.BSTNode x6 = new BSTTree1.BSTNode(6, 6);
-        BSTTree1.BSTNode root2 = new BSTTree1.BSTNode(5, 5, x2, x6);
-        BSTTree1 tree2 = new BSTTree1();
+        BSTTree_I.BSTNode x6 = new BSTTree_I.BSTNode(6, 6);
+        BSTTree_I.BSTNode root2 = new BSTTree_I.BSTNode(5, 5, x2, x6);
+        BSTTree_I tree2 = new BSTTree_I();
         tree2.root = root2;
 
         assertTrue(isSameTree(tree1.root, tree2.root));
@@ -350,16 +350,16 @@ class BSTTree1Test {
              / \   / \
             1   3 5   7
          */
-        BSTTree1.BSTNode n1 = new BSTTree1.BSTNode(1, 1);
-        BSTTree1.BSTNode n3 = new BSTTree1.BSTNode(3, 3);
-        BSTTree1.BSTNode n2 = new BSTTree1.BSTNode(2, 2, n1, n3);
+        BSTTree_I.BSTNode n1 = new BSTTree_I.BSTNode(1, 1);
+        BSTTree_I.BSTNode n3 = new BSTTree_I.BSTNode(3, 3);
+        BSTTree_I.BSTNode n2 = new BSTTree_I.BSTNode(2, 2, n1, n3);
 
-        BSTTree1.BSTNode n5 = new BSTTree1.BSTNode(5, 5);
-        BSTTree1.BSTNode n7 = new BSTTree1.BSTNode(7, 7);
-        BSTTree1.BSTNode n6 = new BSTTree1.BSTNode(6, 6, n5, n7);
-        BSTTree1.BSTNode root = new BSTTree1.BSTNode(4, 4, n2, n6);
+        BSTTree_I.BSTNode n5 = new BSTTree_I.BSTNode(5, 5);
+        BSTTree_I.BSTNode n7 = new BSTTree_I.BSTNode(7, 7);
+        BSTTree_I.BSTNode n6 = new BSTTree_I.BSTNode(6, 6, n5, n7);
+        BSTTree_I.BSTNode root = new BSTTree_I.BSTNode(4, 4, n2, n6);
 
-        BSTTree1 tree = new BSTTree1();
+        BSTTree_I tree = new BSTTree_I();
         tree.root = root;
 
         assertIterableEquals(List.of(1, 2, 3, 4, 5), tree.less(6));

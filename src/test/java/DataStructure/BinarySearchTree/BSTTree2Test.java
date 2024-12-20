@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BSTTree2Test {
 
-    public BSTTree2<String,String> creatTree(){
+    public BSTTree_II<String,String> creatTree(){
         /*
                  4
                /   \
@@ -16,22 +16,22 @@ class BSTTree2Test {
 
          */
 
-        BSTTree2.BSTNode<String, String> n1 = new BSTTree2.BSTNode<>("a","张无忌");
-        BSTTree2.BSTNode<String, String> n3 = new BSTTree2.BSTNode<>("c","宋青书");
-        BSTTree2.BSTNode<String, String> n2 = new BSTTree2.BSTNode<>("b","周芷若",n1,n3);
-        BSTTree2.BSTNode<String, String> n5 = new BSTTree2.BSTNode<>("e","说不得");
-        BSTTree2.BSTNode<String, String> n7 = new BSTTree2.BSTNode<>("g","殷离");
-        BSTTree2.BSTNode<String, String> n6 = new BSTTree2.BSTNode<>("f","赵敏",n5,n7);
-        BSTTree2.BSTNode<String, String> root = new BSTTree2.BSTNode<>("d","小昭",n2,n6);
+        BSTTree_II.BSTNode<String, String> n1 = new BSTTree_II.BSTNode<>("a","张无忌");
+        BSTTree_II.BSTNode<String, String> n3 = new BSTTree_II.BSTNode<>("c","宋青书");
+        BSTTree_II.BSTNode<String, String> n2 = new BSTTree_II.BSTNode<>("b","周芷若",n1,n3);
+        BSTTree_II.BSTNode<String, String> n5 = new BSTTree_II.BSTNode<>("e","说不得");
+        BSTTree_II.BSTNode<String, String> n7 = new BSTTree_II.BSTNode<>("g","殷离");
+        BSTTree_II.BSTNode<String, String> n6 = new BSTTree_II.BSTNode<>("f","赵敏",n5,n7);
+        BSTTree_II.BSTNode<String, String> root = new BSTTree_II.BSTNode<>("d","小昭",n2,n6);
 
-        BSTTree2<String, String> tree = new BSTTree2<>();
+        BSTTree_II<String, String> tree = new BSTTree_II<>();
         tree.root = root;
         return tree;
     }
 
     @Test
     void get(){
-        BSTTree2<String, String> tree = creatTree();
+        BSTTree_II<String, String> tree = creatTree();
         assertEquals("张无忌",tree.get("a"));
         assertEquals("周芷若",tree.get("b"));
         assertEquals("宋青书",tree.get("c"));

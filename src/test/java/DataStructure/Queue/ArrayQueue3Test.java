@@ -10,7 +10,7 @@ class ArrayQueue3Test {
 
     @Test
     public void testOffer(){
-        ArrayQueue3 queue = new ArrayQueue3<>(5);
+        ArrayQueue_III queue = new ArrayQueue_III<>(5);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
@@ -23,7 +23,7 @@ class ArrayQueue3Test {
 
     @Test
     public void testPeek(){
-        ArrayQueue3 queue = new ArrayQueue3<>(5);
+        ArrayQueue_III queue = new ArrayQueue_III<>(5);
         assertNull(queue.peek());
         queue.offer(1);
         assertEquals(1,queue.peek());
@@ -33,7 +33,7 @@ class ArrayQueue3Test {
 
     @Test
     public void testPoll(){
-        ArrayQueue3 queue = new ArrayQueue3<>(5);
+        ArrayQueue_III queue = new ArrayQueue_III<>(5);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
@@ -51,7 +51,7 @@ class ArrayQueue3Test {
 
     @Test
     public void testOffLimit(){
-        ArrayQueue3 queue = new ArrayQueue3<>(3);
+        ArrayQueue_III queue = new ArrayQueue_III<>(3);
         queue.offer(1);
         queue.offer(2);
         queue.offer(3);
@@ -63,7 +63,7 @@ class ArrayQueue3Test {
 
     @Test
     public void boundary(){
-        ArrayQueue3 queue = new ArrayQueue3<>(10);
+        ArrayQueue_III queue = new ArrayQueue_III<>(10);
         // 2147483647 int正整数最大值
         queue.head = 2147483640;
         queue.tail = queue.head;

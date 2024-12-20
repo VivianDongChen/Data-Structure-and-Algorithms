@@ -8,7 +8,7 @@ class PriorityQueue3Test {
 
     @Test
     public void test(){
-        PriorityQueue3<Entry> queue = new PriorityQueue3<>(5);
+        PriorityQueue_III<Entry> queue = new PriorityQueue_III<>(5);
         queue.offer(new Entry("task1",4));
         queue.offer(new Entry("task2",3));
         queue.offer(new Entry("task3",2));

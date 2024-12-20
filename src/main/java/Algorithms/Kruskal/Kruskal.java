@@ -75,7 +75,7 @@ public class Kruskal {
      */
     static void kruskal(int size, PriorityQueue<Edge> queue) {
         List<Edge> list = new ArrayList<>();   //用开存储结果的集合
-        DisjointSet1 set = new DisjointSet1(size);   //不相交集合
+        DisjointSet_I set = new DisjointSet_I(size);   //不相交集合
         while(list.size() < size - 1){      //所求边的个数是顶点数 - 1
             Edge poll = queue.poll();      //获取权重最小的边
             int i = set.find(poll.start);
