@@ -3,8 +3,8 @@ package Algorithms.BinarySearch;
 public class BinarySearch {
 
     /*
-       Param：a -带查找的升序数组
-              target - 带查找的目标值
+       Param：a -待查找的升序数组
+              target - 待查找的目标值
 
        Returns：找到则返回索引
                 找不到返回：-1
