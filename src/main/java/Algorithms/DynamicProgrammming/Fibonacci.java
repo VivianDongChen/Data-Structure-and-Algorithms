@@ -34,7 +34,7 @@ public class Fibonacci {
      * @return
      */
     public static int fibonacci1(int n) {
-        int[] dp = new int[n +1]; //用来缓存结果
+        int[] dp = new int[n + 1]; //用来缓存结果
         if (n == 0){
             dp[0] = 0;
             return 0;
