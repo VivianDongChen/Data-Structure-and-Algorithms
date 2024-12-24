@@ -3,7 +3,7 @@ package Algorithms.DynamicProgrammming;
 /**
  * 790. Domino and Tromino Tiling
  */
-public class LeetCode_790 {
+public class LeetCode_0790 {
     public int numTilings1(int n){
         long [] dp = new long[n];
         long [] dpa = new long[n];
@@ -51,7 +51,7 @@ public class LeetCode_790 {
     }
 
     public static void main(String[] args) {
-        LeetCode_790 test = new LeetCode_790();
+        LeetCode_0790 test = new LeetCode_0790();
 
         System.out.println(test.numTilings1(0));
         System.out.println(test.numTilings1(1));

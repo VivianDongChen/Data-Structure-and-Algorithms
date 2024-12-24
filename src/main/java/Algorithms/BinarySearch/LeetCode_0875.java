@@ -8,7 +8,7 @@ import java.util.Arrays;
  * - 计算总时间 sum 的复杂度：对于每个二分查找的速度 m，需要遍历整个 piles 数组，计算所需时间 sum。遍历数组的复杂度为 O(n)，其中 n 是数组的长度。
  *  综上，总时间复杂度为：O(n⋅log(max(piles)))
  */
-public class LeetCode_875 {
+public class LeetCode_0875 {
     public int minEatingSpeed(int[] piles, int h) {
         int l = 1;
         int r = Arrays.stream(piles).max().getAsInt(); // 最大速度（最大堆的香蕉数）
@@ -30,7 +30,7 @@ public class LeetCode_875 {
     }
 
     public static void main(String[] args) {
-        LeetCode_875 test = new LeetCode_875();
+        LeetCode_0875 test = new LeetCode_0875();
         System.out.println(test.minEatingSpeed(new int[]{30,11,23,4,20},6));  //expected： 23
     }
 }

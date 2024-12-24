@@ -4,7 +4,7 @@ package Algorithms.BinarySearch;
  * LeetCode 162: Find Peak Element
  * Time Complexity:  O(logn)
  */
-public class LeetCode_162 {
+public class LeetCode_0162 {
     public int findPeakElement(int[] nums) {
         if(nums.length == 1) return 0; // single element
 
@@ -32,7 +32,7 @@ public class LeetCode_162 {
     }
 
     public static void main(String[] args) {
-        LeetCode_162 test = new LeetCode_162();
+        LeetCode_0162 test = new LeetCode_0162();
         System.out.println(test.findPeakElement(new int[]{1,2,3,1}));   //expected: 2
         System.out.println(test.findPeakElement(new int[]{1,2,1,2,1}));    //expected: 1
     }

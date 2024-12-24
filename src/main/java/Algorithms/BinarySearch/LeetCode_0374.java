@@ -1,14 +1,12 @@
 package Algorithms.BinarySearch;
 
-import java.sql.SQLOutput;
-
-public class LeetCode_374 {
+public class LeetCode_0374 {
     int pick;
 
     /**
      *  The number pick is within 1 to n.
      */
-    public LeetCode_374(int pick) {
+    public LeetCode_0374(int pick) {
         this.pick = pick;
     }
 
@@ -55,13 +53,13 @@ public class LeetCode_374 {
     }
 
     public static void main(String[] args) {
-        LeetCode_374 test1 = new LeetCode_374(6);
+        LeetCode_0374 test1 = new LeetCode_0374(6);
         System.out.println(test1.guessNumber(10)); // expected: 6
 
-        LeetCode_374 test2 = new LeetCode_374(1);
+        LeetCode_0374 test2 = new LeetCode_0374(1);
         System.out.println(test2.guessNumber(1));   // expected: 1
 
-        LeetCode_374 test3 = new LeetCode_374(1);
+        LeetCode_0374 test3 = new LeetCode_0374(1);
         System.out.println(test2.guessNumber(2));    //expected: 1
     }
 }
