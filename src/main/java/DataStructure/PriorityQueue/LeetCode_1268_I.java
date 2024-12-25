@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 /**
  * 1268. Search Suggestions  -- 方法1: minHeap
  * Time Complexity：
- * 外层循环遍历 searchWord 的每个前缀，运行L 次。
+ * 外层循环遍历 searchWord的每个前缀，运行L次。
  * 内层循环遍历 products，对每个字符串执行 startsWith()，运行O(N⋅P)。
  * 总时间复杂度为：O(L⋅N⋅P)
  * N：products 数组的大小（产品数量）。
