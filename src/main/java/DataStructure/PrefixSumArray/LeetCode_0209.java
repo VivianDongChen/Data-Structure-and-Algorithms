@@ -1,11 +1,11 @@
-package DataStructure.Array.PrefixSumArray;
+package DataStructure.PrefixSumArray;
 
 import java.util.Arrays;
 
 /**
  * 时间复杂度 O（n log n), 空间复杂度 O (n)
  */
-public class LeetCode0209MinimumSizeSubarraySum {
+public class LeetCode_0209 {
 
     /*
     使用的知识点一（数据结构）：
