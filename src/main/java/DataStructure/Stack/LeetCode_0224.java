@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * - 所以不会能出现1+2（3+4），因为没有乘法，所以只有1+2+（3+4)这种情况
  * - 所以“）”前面的数字其余的数字后面都会跟着运算符，而这个运算符就代表了其后面的数字或者括号的正负
  */
-public class LeetCode_224 {
+public class LeetCode_0224 {
     public int calculate(String s){
         LinkedList<Integer> stack = new LinkedList<>(); //stack里面放integer便于计算，所以下面符号也要转换为+1/-1
         int currNumber = 0;
@@ -48,7 +48,7 @@ public class LeetCode_224 {
     }
 
     public static void main(String[] args) {
-        LeetCode_224 test = new LeetCode_224();
+        LeetCode_0224 test = new LeetCode_0224();
         System.out.println(test.calculate(" 2-1 + 2 "));
         System.out.println(test.calculate(" 1+1 "));
     }
