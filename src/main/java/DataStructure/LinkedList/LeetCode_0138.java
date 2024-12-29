@@ -41,7 +41,6 @@ public class LeetCode_0138 {
         Node newDummyHead = new Node(0);
         Node newCurr = newDummyHead;    //指针
         while(curr != null){
-
             newCurr.next = curr.next;
             newCurr = newCurr.next;
 
