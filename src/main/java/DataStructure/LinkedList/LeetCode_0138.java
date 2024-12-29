@@ -17,18 +17,14 @@ public class LeetCode_0138 {
 
     public Node copyRandomList(Node head) {
         Node curr = head;   //指针
-        Node next;//指针
-
 
         // Step 1: 交错插入新节点
         while(curr != null){
-            next = curr.next;
-
             Node newNode = new Node(curr.val);
-            newNode.next = next;
+            newNode.next = curr.next;
             curr.next = newNode;
 
-            curr = next;
+            curr = newNode.next;
         }
 
         // Step 2: 设置 random 指针
@@ -45,13 +41,12 @@ public class LeetCode_0138 {
         Node newDummyHead = new Node(0);
         Node newCurr = newDummyHead;    //指针
         while(curr != null){
-            next = curr.next.next;
 
             newCurr.next = curr.next;
             newCurr = newCurr.next;
 
-            curr.next = next;   //恢复原装链
-            curr = next;
+            curr.next = curr.next.next;   //恢复原装链
+            curr = curr.next;
         }
 
         Node res = newDummyHead.next;
