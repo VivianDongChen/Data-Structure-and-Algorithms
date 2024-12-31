@@ -1,12 +1,10 @@
 package DataStructure.BinaryTree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * 114. Flatten Binary Tree to Linked List
+ * Morris Traversal
  */
-public class LeetCode_0114 {
+public class LeetCode_0114_I {
 
     public class TreeNode {
         int val;
@@ -63,7 +61,7 @@ public class LeetCode_0114 {
     }
 
     public static void main(String[] args) {
-        LeetCode_0114 test= new LeetCode_0114();
+        LeetCode_0114_I test= new LeetCode_0114_I();
 
         TreeNode root = test.new TreeNode(1);
         root.left = test.new TreeNode(2);
@@ -73,7 +71,7 @@ public class LeetCode_0114 {
         root.right.right = test.new TreeNode(6);
 
         test.flatten(root);
-        test.printTreeStructure(root);
+        test.printTreeStructure(root);  //expected: [1,null,2,null,3,null,4,null,5,null,6]
 
     }
 
