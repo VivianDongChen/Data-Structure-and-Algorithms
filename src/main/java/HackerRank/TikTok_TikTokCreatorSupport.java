@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class TickTok_TikTokCreatorSupport {
+public class TikTok_TikTokCreatorSupport {
     public static int maximizeCreatorSupport(List<Integer> impactValue) {
         List<Integer> pos = new ArrayList<>();
         List<Integer> zeros = new ArrayList<>();
