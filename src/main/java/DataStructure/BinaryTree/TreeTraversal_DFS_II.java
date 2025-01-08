@@ -19,7 +19,7 @@ public class TreeTraversal_DFS_II {
                 curr = curr.left;
             }else{                //当节点为null时（左子树没有元素了）
                 TreeNode pop = stack.pop();    //弹栈（最左边的元素）
-                curr= pop.right;       //看看栈顶元素有没有右子树，如果有的话，负值给curr，进入下一个循环
+                curr= pop.right;       //看看栈顶元素有没有右子树，如果有的话，赋值给curr，进入下一个循环
             }
         }
     }
@@ -36,7 +36,7 @@ public class TreeTraversal_DFS_II {
             }else{                //当节点为null时（左子树没有元素了）
                 TreeNode pop = stack.pop();    //弹栈（最左边的元素）
                 System.out.print(pop.val + " ");     //打印栈顶元素(left-root)
-                curr= pop.right;       //看看栈顶元素有没有右子树，如果有的话，负值给curr，进入下一个循环
+                curr= pop.right;       //看看栈顶元素有没有右子树，如果有的话，赋值给curr，进入下一个循环
             }
         }
     }
