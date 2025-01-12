@@ -2,6 +2,8 @@ package DataStructure.BinarySearchTree;
 
 /**
  * 74. Search a 2D Matrix
+ * Time Complexity: O(log(m × n))
+ * Space Complexity: O(1)
  */
 public class LeetCode_0074 {
     public boolean searchMatrix(int[][] matrix, int target) {
