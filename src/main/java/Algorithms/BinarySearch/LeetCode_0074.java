@@ -1,4 +1,4 @@
-package DataStructure.BinarySearchTree;
+package Algorithms.BinarySearch;
 
 /**
  * 74. Search a 2D Matrix
