@@ -49,4 +49,21 @@ public class LeetCode_0211 {
         }
         return curr.isEndOfWord;  //遍历结束后，看下最后这个curr是否EndOfWord，如果是的话，返回true
     }
+
+
+    public static void main(String[] args) {
+        // 创建 WordDictionary 对象
+        LeetCode_0211 wordDictionary = new LeetCode_0211();
+
+        // 添加单词
+        wordDictionary.addWord("bad");
+        wordDictionary.addWord("dad");
+        wordDictionary.addWord("mad");
+
+        // 测试搜索功能
+        System.out.println("Search 'pad': " + wordDictionary.search("pad")); // 预期输出: false
+        System.out.println("Search 'bad': " + wordDictionary.search("bad")); // 预期输出: true
+        System.out.println("Search '.ad': " + wordDictionary.search(".ad")); // 预期输出: true
+        System.out.println("Search 'b..': " + wordDictionary.search("b..")); // 预期输出: true
+    }
 }
