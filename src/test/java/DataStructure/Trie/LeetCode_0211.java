@@ -30,10 +30,6 @@ public class LeetCode_0211 {
         for (int i = 0; i < word.length(); ++i) {  //遍历word的所有字符
             char c = word.charAt(i);
 
-            if (c != '.' && (c < 'a' || c > 'z')) {
-                throw new IllegalArgumentException("Invalid character in word. Only 'a-z' or '.' are allowed.");
-            }
-
             if (c == '.') {//如果字符为“."
                 for (LeetCode_0211 ch : curr.children) { //遍历curr孩子中的所有字符
                     if (ch != null && ch.search(word.substring(i + 1))) {
