@@ -2,6 +2,7 @@ package DataStructure.Trie;
 
 /**
  * 211. Design Add and Search Words Data Structure
+ * 难点： 字符的add和search都是从curr.children开始的
  */
 public class LeetCode_0211 {
     private LeetCode_0211[] children;   //要素1: 孩子（有26个元素的数组，数组的索引代表a-z，值是null或者not null）
