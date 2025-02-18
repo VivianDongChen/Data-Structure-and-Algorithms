@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * 冒泡排序（非递归实现）
  * 最好：O（n)  最坏： O(n^2)   平均：O(n^2)   空间：O（1）
+ * 注意：只有在定义了边界（x)之后， 才能达到最优的O (n)
  */
 public class BubbleSort {
     private static void bubble(int[] a){
@@ -16,7 +17,7 @@ public class BubbleSort {
                     int t = a[i];
                     a[i] = a[i + 1];
                     a[i + 1] = t;
-                    x = i;
+                    x = i;  //记录已经完成排序部分的边界
                 }
             }
             j = x;
