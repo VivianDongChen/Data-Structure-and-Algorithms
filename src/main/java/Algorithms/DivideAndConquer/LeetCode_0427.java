@@ -50,8 +50,8 @@ public class LeetCode_0427 {
 
         Node node = new Node(true,false);
         node.topLeft = helper(grid,i,j,n/2);
-        node.topRight = helper(grid,i+n/2,j,n/2);
-        node.bottomLeft = helper(grid,i,j+n/2,n/2);
+        node.topRight = helper(grid,i,j+n/2,n/2);
+        node.bottomLeft = helper(grid,i+n/2,j,n/2);
         node.bottomRight = helper(grid,i+n/2,j+n/2, n/2);
         return node;
     }
