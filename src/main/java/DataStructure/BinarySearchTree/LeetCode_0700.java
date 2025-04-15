@@ -1,7 +1,7 @@
 package DataStructure.BinarySearchTree;
 
 /**
- * 查询节点
+ * 查询BST的节点
  */
 public class LeetCode_0700 {
 
