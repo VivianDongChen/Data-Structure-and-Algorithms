@@ -18,6 +18,6 @@ public class AdjacencyListGraph {
     //add edge
     public void addEdge(int src, int dest){
         adjLists[src].add(dest);
-        adjLists[dest].add(src);
+        adjLists[dest].add(src);  //for undirected graph
     }
 }
