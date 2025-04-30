@@ -2,12 +2,12 @@ package DataStructure.Graph;
 
 import java.util.LinkedList;
 
-public class AdjacencyListGraph {
+public class GraphArrayOfLinkedList {
     private int numVertices;
     private LinkedList<Integer>[] adjLists;
 
     //Constructor
-    public AdjacencyListGraph(int numVertices) {
+    public GraphArrayOfLinkedList(int numVertices) {
         this.numVertices = numVertices;
         adjLists = new LinkedList[numVertices];
         for (int i = 0; i < numVertices; i++) {
