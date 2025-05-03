@@ -3,7 +3,7 @@ package DataStructure.Graph;
 import java.util.LinkedList;
 
 public class GraphArrayOfLinkedListsWithWeight {
-    private int numVertices;
+    private final int numVertices;
     private final LinkedList<int[]>[] graph;
 
     public GraphArrayOfLinkedListsWithWeight(int numVertices) {

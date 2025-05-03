@@ -1,11 +1,11 @@
 package DataStructure.Graph;
 
-public class GraphAdjacencyMatrix {
+public class GraphAdjacencyMatrixWithoutWeight {
     private int numVertices;
     private boolean[][] adjMatrix;
 
     //Constructor
-    public GraphAdjacencyMatrix(int numVertices){
+    public GraphAdjacencyMatrixWithoutWeight(int numVertices){
         this.numVertices = numVertices;
         adjMatrix = new boolean[numVertices][numVertices];
     }
