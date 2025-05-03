@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GraphMapOfListsWithoutWeight {
-    private final Map<Integer, List<Integer>> graph;
+public class GraphMapOfListsWithWeight {
+    private final Map<Integer, List<int[]>> graph;
 
-    public GraphMapOfListsWithoutWeight(int numVertices) {
+    public GraphMapOfListsWithWeight() {
         graph = new HashMap<>();
     }
 
-    public void addEdge(int v1, int v2){
+    public void addEdges(int v1, int v2, int w){
         graph.putIfAbsent(v1, new ArrayList<>());
         graph.putIfAbsent(v2, new ArrayList<>());
-        graph.get(v1).add(v2);
-        graph.get(v2).add(v1);
+        graph.get(v1).add(new int[]{v2, w});
+        graph.get(v2).add(new int[]{v1, w});
     }
+
 }
