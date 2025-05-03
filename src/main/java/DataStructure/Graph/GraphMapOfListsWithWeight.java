@@ -16,7 +16,6 @@ public class GraphMapOfListsWithWeight {
         graph.putIfAbsent(v1, new ArrayList<>());
         graph.putIfAbsent(v2, new ArrayList<>());
         graph.get(v1).add(new int[]{v2, w});
-        graph.get(v2).add(new int[]{v1, w});
+        graph.get(v2).add(new int[]{v1, w}); // undirected graph
     }
-
 }
